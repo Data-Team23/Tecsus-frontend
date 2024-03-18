@@ -20,5 +20,10 @@ npm run build
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Commit standardization
+
+After preparing files to be committed by "git add ." or by IDE versioning control
+```
+npm run commit
+```
+
