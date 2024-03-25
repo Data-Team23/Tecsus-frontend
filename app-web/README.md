@@ -1,4 +1,4 @@
-# tecsus-frontend
+# app-web
 
 ## Project setup
 ```
@@ -27,3 +27,5 @@ After preparing files to be committed by "git add ." or by IDE versioning contro
 npm run commit
 ```
 
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
