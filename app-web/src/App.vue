@@ -1,24 +1,15 @@
 <template>
   <div id="app">
-    <NavbarSuperior />
+    <NavBar />
     <div class="content">
-      <NavbarDobravel />
       <router-view></router-view>
     </div>
   </div>
 </template>
 
-<script>
-import NavbarDobravel from './components/NavBar/NavBarLateral.vue';
-import NavbarSuperior from './components/NavBar/NavBarSuperior.vue';
+<script setup>
+import NavBar from './components/NavBar/NavBar.vue';
 
-export default {
-  name: 'App',
-  components: {
-    NavbarDobravel,
-    NavbarSuperior
-  }
-}
 </script>
 
 <style>
