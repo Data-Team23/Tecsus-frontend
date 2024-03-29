@@ -1,22 +1,17 @@
-import Vue from 'vue';
-import Router from 'vue-router';
-import NavbarDobravel from '@/components/NavBar/NavBarLateral.vue';
-import NavbarSuperior from '@/components/NavBar/NavBarSuperior.vue';
-
-Vue.use(Router);
+import { createRouter, createWebHistory } from 'vue-router';
+import UploadImage from '@/views/UploadImage.vue';
 
 const routes = [
   {
-    path: '/',
-    components: {
-      default: NavbarDobravel,
-      navbarSuperior: NavbarSuperior
-    }
+    path: '/upload',
+    name: 'Upload',
+    component: UploadImage
   },
 ];
 
-export default new Router({
-  mode: 'history',
-  base: process.env.BASE_URL,
+const router = createRouter({
+  history: createWebHistory(),
   routes
 });
+
+export default router;
