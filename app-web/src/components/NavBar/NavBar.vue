@@ -1,8 +1,11 @@
 <template>
 <div>
     <div class="navbar-superior">
-        <div>
+        <div class="navbar-logo">
             <img src="@/assets/logo.png" alt="Logo" class="logo">
+        </div>
+        <div class="navbar-user">
+            <span class="email-label">aluno@fatec.sp.gov.br</span>
         </div>
     </div>
     <div :class="['navbar-lateral', { 'dobrada': dobrada }]">

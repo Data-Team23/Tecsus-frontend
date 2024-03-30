@@ -28,6 +28,9 @@ body {
   height: auto
 }
 
+.navbar-user {
+  font-weight: bold;
+}
 
 .navbar-lateral {
   background-color: var(--cor-primaria);
