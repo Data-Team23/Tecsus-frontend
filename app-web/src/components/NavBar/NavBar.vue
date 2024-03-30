@@ -22,7 +22,7 @@
                 <router-link to="/contas">Contas</router-link>
             </div>
         </div>
-        <router-view :class="{'view-dobrada': dobrada}"></router-view>
+        <router-view :class="{'view-dobrada': !dobrada}"></router-view>
     </div>
 </template>
 
