@@ -1,5 +1,9 @@
 <template>
-    <div style="background-color: lightpink; align-items: center; justify-content: center;">
-        <h1>Oi</h1>
-    </div>
+    <div style="align-items: center; justify-content: center;">
+        <div class="container-filter">
+            <input type="text">
+        </div>
+    </div>    
+
 </template>
+

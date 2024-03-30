@@ -1,15 +1,13 @@
-<template>
-  <div id="app">
-    <NavBar />
-    <div class="content">
-      <router-view></router-view>
-    </div>
-  </div>
+<template>  
+  <header>
+    <NavBar></NavBar> 
+  </header>
+  <main>
+  </main>
 </template>
 
 <script setup>
 import NavBar from './components/navbar/NavBar.vue';
-
 </script>
 
 <style>
@@ -20,9 +18,4 @@ import NavBar from './components/navbar/NavBar.vue';
   text-align: center;
   color: #2c3e50;
 }
-
-.content {
-  display: flex;
-}
-
 </style>
