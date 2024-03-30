@@ -1,7 +1,7 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
 
 :root {
-  --cor-primaria: #5652C7;
+  --cor-primaria: #5751D3;
   --cor-texto: #fff;
   --cor-hover: #ffffff80;
 }
@@ -21,6 +21,13 @@ body {
   justify-content: space-between;
   align-items: center;
 }
+
+.logo {
+  margin-top: 6px;
+  width: 150px;
+  height: auto
+}
+
 
 .navbar-lateral {
   background-color: var(--cor-primaria);
