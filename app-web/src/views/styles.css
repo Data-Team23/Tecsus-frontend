@@ -1,0 +1,27 @@
+.container-upload{
+    margin-left: 60px;
+    padding: 70px;
+    display: flex;
+    flex-direction: column;
+}
+.view-dobrada{
+    margin-left: 250px !important;
+}
+.container-filter{
+    display: flex;
+    justify-content: space-between;
+}
+
+.container-import{
+    display: flex;
+    width: 100%;
+    margin-top: 70px;
+}
+
+select:nth-child(even), select:first-child{
+    margin-right: 70px;
+}
+
+.container-table {
+    margin-top: 40px;
+}
