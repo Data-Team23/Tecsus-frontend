@@ -33,6 +33,12 @@ select:nth-child(even), select:first-child{
     display: flex;
     margin-top: 20px;
     justify-content: end;
+    gap: 20px;
+}
+
+.container-table-message{
+    color: red;
+    font-size: 19px;
 }
 
 

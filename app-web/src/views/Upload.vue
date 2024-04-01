@@ -25,7 +25,7 @@
             </InputField>
         </div>
         <div class="container-table">
-            <div v-if="!fileInputValue">
+            <div class="container-table-message" v-if="!fileInputValue">
                 <p>Para vizualizar os dados, selecione um arquivo para importar!</p>
             </div>
             <Table
@@ -35,6 +35,10 @@
             </Table>
         </div>
         <div class="container-button">
+            <InputButton 
+                :textButton="'Limpar dados'" 
+                :onClick="clearData">
+            </InputButton>
             <InputButton 
                 :textButton="'Salvar'" 
                 :onClick="uploadCSV">
@@ -122,6 +126,13 @@ const processData = (content) => {
     return obj;
   });
   data.value = formattedData;
+};
+
+const clearData = () => {
+    data.value = null;
+    fileInputValue = null;
+    countTypeValue.value = null;
+    documentTypeValue.value = null;
 };
 
 const uploadCSV = () => {
