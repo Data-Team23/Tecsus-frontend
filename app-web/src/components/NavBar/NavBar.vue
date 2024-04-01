@@ -11,7 +11,7 @@
         <div :class="['navbar-lateral', { 'dobrada': dobrada }]">
             <div class="icon">
                 <button @click="toggleDobrada">
-                <i :class="['fa-solid', dobrada ? 'fa-angles-right' : 'fa-angles-left', 'fa-2xl']"></i>
+                    <i :class="['fa-solid', dobrada ? 'fa-angles-right' : 'fa-angles-left', 'fa-2xl']"></i>
                 </button>
             </div>
             <div class="container" v-show=!dobrada>
@@ -33,7 +33,7 @@ import { ref } from 'vue';
 const dobrada = ref(false);
 
 const toggleDobrada = () => {
-dobrada.value = !dobrada.value; 
+    dobrada.value = !dobrada.value; 
 };
 </script>"
 
