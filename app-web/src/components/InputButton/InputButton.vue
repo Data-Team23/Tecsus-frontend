@@ -1,21 +1,23 @@
 <template>
-    <button>{{ textButton }}</button>
+    <button @click="handleClick">{{ textButton }}</button>
 </template>
 
-<script>
+<script setup>
 import './styles.css'
 
-export default {
-    name: 'InputButton',
-    props: {
-        textButton: {
-            type: String,
-            default: 'Enviar'
-        },
-        onClick: {
-            type: Function,
-            default: () => {}
-        }
+const props = defineProps({
+    textButton: {
+        type: String,
+        default: 'Enviar'
+    },
+    onClick: {
+        type: Function,
+        default: () => {}
     }
+})
+
+const handleClick = () => {
+    props.onClick();
 }
 </script>
+  

@@ -1,0 +1,38 @@
+.container-upload{
+    margin-left: 60px;
+    padding: 70px;
+    display: flex;
+    flex-direction: column;
+    transition: margin-left 0.3s ease;
+}
+
+.container-filter{
+    display: flex;
+    justify-content: space-between;
+}
+
+.container-import{
+    display: flex;
+    width: 100%;
+    margin-top: 70px;
+}
+
+select:nth-child(even), select:first-child{
+    margin-right: 70px;
+}
+
+.container-table {
+    margin-top: 40px;
+    width: 100%;
+    height: 400px; /* Defina a altura máxima da tabela aqui */
+    overflow-x: auto; /* Adiciona barra de rolagem horizontal quando necessário */
+    overflow-y: auto; /* Adiciona barra de rolagem vertical quando necessário */
+}
+
+.container-button{
+    display: flex;
+    margin-top: 20px;
+    justify-content: end;
+}
+
+

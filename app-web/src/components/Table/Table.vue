@@ -1,31 +1,28 @@
+<!-- TableComponent.vue -->
 <template>
-    <div>
-        <table>
-            <thead>
-                <tr>
-                    <!-- Loop pelas chaves do objeto e criando as colunas da tabela -->
-                    <th v-for="(value, key) in dataObject" :key="key">{{ key }}</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Loop pelos valores do objeto para preencher os dados da tabela -->
-                <tr>
-                    <td v-for="(value, key) in dataObject" :key="key">{{ value }}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</template>
-
-<script>
-import "./styles.css"
-export default {
-    name: 'Table',
-    props: {
-        dataObject: {
-            type: Object,
-            required: true
-        }
+    <table v-if="data">
+      <thead>
+        <tr>
+          <th v-for="(value, index) in data[0]" :key="index">{{ index }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(row, index) in data" :key="index">
+          <td v-for="(value, key) in row" :key="key">{{ value }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </template>
+  
+  <script setup>
+  import "./styles.css"
+  import { ref } from 'vue';
+  
+  const props = defineProps({
+    data: {
+      type: Array,
+      required: true
     }
-}
-</script>
+  });
+  </script>
+  

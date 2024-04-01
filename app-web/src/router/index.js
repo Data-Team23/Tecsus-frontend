@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import UploadImage from '@/views/UploadImage.vue';
+import UploadImage from '@/views/Upload.vue';
 
 const routes = [
   {

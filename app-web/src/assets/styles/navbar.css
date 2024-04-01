@@ -64,8 +64,8 @@ body {
   cursor: pointer;
 }
 
-.view-dobrada {
-  margin-left: 250px;
+.view-dobrada{
+  margin-left: 250px !important;
 }
 
 .container {
