@@ -44,7 +44,7 @@
                 :onClick="uploadCSV">
             </InputButton>
         </div>
-    </div>    
+    </div>
 </template>
 
 <script setup>
@@ -135,38 +135,60 @@ const clearData = () => {
     documentTypeValue.value = null;
 };
 
+import { useToast } from 'vue-toastification';
+const toast = useToast();
+
 const uploadCSV = () => {
-    if (!fileInputValue) {
-        alert("Por favor, selecione um arquivo CSV.");
-        return;
-    }
+  const toast = useToast();
 
-    if (!countTypeValue.value) {
-        alert("Por favor, selecione o tipo de conta.");
-        return;
-    }
+  if (!fileInputValue) {
+    toast.error('Selecione um arquivo CSS!', {
+      timeout: 3000, // Definindo um timeout de 3 segundos
+      position: 'bottom-center' // Posicionando o toast no centro inferior da tela
+    });
+    return;
+  }
 
-    if (!documentTypeValue.value) {
-        alert("Por favor, selecione o tipo de documento.");
-        return;
-    }
+  if (!countTypeValue.value) {
+    toast.error('Por favor, selecione o tipo de conta.', {
+      position: 'bottom-center'
+    });
+    return;
+  }
 
-    const formData = new FormData();
-    formData.append('file', fileInputValue);
+  if (!documentTypeValue.value) {
+    toast.error('Por favor, selecione o tipo de documento.', {
+      position: 'bottom-center'
+    });
+    return;
+  }
 
-    fetch(`http://127.0.0.1:8000/api/contas/upload/${countTypeValue.value}/${documentTypeValue.value}/`, {
-        method: 'POST',
-        body: formData,
-    })
+  const formData = new FormData();
+  formData.append('file', fileInputValue);
+
+  toast.info('Salvando arquivo CSV...', {
+    position: 'bottom-center'
+  });
+
+  fetch(`http://127.0.0.1:8000/api/contas/upload/${countTypeValue.value}/${documentTypeValue.value}/`, {
+    method: 'POST',
+    body: formData,
+  })
     .then(response => {
-        if (response.ok) {
-            alert("Arquivo CSV enviado com sucesso!");
-        } else {
-            alert("Erro ao enviar o arquivo CSV.");
-        }
+      if (response.ok) {
+        toast.success('Arquivo CSV enviado com sucesso!', {
+          position: 'bottom-center'
+        });
+      } else {
+        toast.error('Erro ao enviar o arquivo CSV.', {
+          position: 'bottom-center'
+        });
+      }
     })
-    .catch(error => {
-        alert("Erro ao enviar o arquivo CSV.");
+    .catch(() => {
+      toast.error('Erro ao enviar o arquivo CSV.', {
+        position: 'bottom-center'
+      });
     });
 };
 
