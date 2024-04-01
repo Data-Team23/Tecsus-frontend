@@ -25,6 +25,9 @@
             </InputField>
         </div>
         <div class="container-table">
+            <div v-if="!fileInputValue">
+                <p>Para vizualizar os dados, selecione um arquivo para importar!</p>
+            </div>
             <Table
                 :data-object="tableObject"
                 :data="data" 
