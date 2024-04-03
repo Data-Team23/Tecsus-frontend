@@ -58,6 +58,9 @@ import { ref } from 'vue';
 const countTypeValue = ref("");
 const documentTypeValue = ref("");
 
+import { useToast } from 'vue-toastification';
+const toast = useToast();
+
 let countTypes = [
     {
         label: 'Conta de água',
@@ -135,16 +138,12 @@ const clearData = () => {
     documentTypeValue.value = null;
 };
 
-import { useToast } from 'vue-toastification';
-const toast = useToast();
-
 const uploadCSV = () => {
-  const toast = useToast();
 
   if (!fileInputValue) {
     toast.error('Selecione um arquivo CSS!', {
-      timeout: 3000, // Definindo um timeout de 3 segundos
-      position: 'bottom-center' // Posicionando o toast no centro inferior da tela
+      timeout: 3000,
+      position: 'bottom-center'
     });
     return;
   }
