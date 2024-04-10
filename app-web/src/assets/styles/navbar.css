@@ -1,0 +1,115 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+
+:root {
+  --cor-primaria: #5751D3;
+  --cor-texto: #fff;
+  --cor-hover: #ffffff80;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.navbar-superior {
+  background-color: var(--cor-primaria);
+  color: var(--cor-texto);
+  height: 52px;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  margin-top: 6px;
+  width: 150px;
+  height: auto
+}
+
+.navbar-user {
+  font-weight: bold;
+}
+
+.navbar-lateral {
+  background-color: var(--cor-primaria);
+  color: var(--cor-texto);
+  width: 250px;
+  height: calc(100% - 52px);
+  position: fixed;
+  top: 52px;
+  left: 0;
+  padding-top: 20px;
+  transition: width 0.3s ease;
+}
+
+.navbar-lateral.dobrada {
+  width: 60px;
+}
+
+.navbar-lateral button {
+  display: block;
+  position: absolute;
+  top: 5px;
+  right: -35px;
+  padding: 10px;
+  background: transparent;
+  border: none;
+  color: var(--cor-texto);
+}
+
+.navbar-lateral button i {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.view-dobrada{
+  margin-left: 250px !important;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-top: 60px;
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--cor-texto);
+}
+
+.container a {
+  color: var(--cor-texto);
+  text-decoration: none;
+}
+
+.container a:hover {
+  text-decoration: none;
+  color: var(--cor-hover)
+}
+
+@media screen and (max-width: 768px) {
+  .navbar-lateral {
+    width: 60px;
+  }
+  
+  .navbar-lateral button {
+    display: none;
+  }
+  
+  .container {
+    margin-top: 0;
+    padding-top: 20px;
+  }
+}
+
+.container {
+  font-size: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    font-size: 1.1rem; 
+  }
+}
