@@ -169,7 +169,7 @@ const uploadCSV = () => {
     position: 'bottom-center'
   });
 
-  fetch(`http://127.0.0.1:8000/api/contas/upload/${countTypeValue.value}/${documentTypeValue.value}/`, {
+  fetch(`http://127.0.0.1:8000/upload/${countTypeValue.value}/${documentTypeValue.value}/`, {
     method: 'POST',
     body: formData,
   })
