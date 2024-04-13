@@ -15,11 +15,26 @@
                 </button>
             </div>
             <div class="container" v-show=!dobrada>
-                <router-link to="/upload">Importar Dados</router-link>
-                <router-link to="/unidades">Unidades</router-link>
-                <router-link to="/concessionarias">Concessionárias</router-link>
-                <router-link to="/contratos">Contratos</router-link>
-                <router-link to="/contas">Contas</router-link>
+                <router-link to="/upload">
+                    <i class="fa-solid fa-file-contract" style="color: #ffffff;"></i>
+                    Importar Dados
+                </router-link>
+                <router-link to="/unidades">
+                    <i class="fa-solid fa-box" style="color: #ffffff;"></i>
+                    Unidades
+                </router-link>
+                <router-link to="/concessionarias">
+                    <i class="fa-solid fa-building" style="color: #ffffff;"></i>
+                    Concessionárias
+                </router-link>
+                <router-link to="/contratos">
+                    <i class="fa-solid fa-file-signature" style="color: #ffffff;"></i>
+                    Contratos
+                </router-link>
+                <router-link to="/contas">
+                    <i class="fa-solid fa-file-invoice-dollar" style="color: #ffffff;"></i>
+                    Contas
+                </router-link>
             </div>
         </div>
         <router-view :class="{'view-dobrada': !dobrada}"></router-view>

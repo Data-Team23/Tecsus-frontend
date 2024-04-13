@@ -82,6 +82,9 @@ body {
 .container a {
   color: var(--cor-texto);
   text-decoration: none;
+  display: flex;
+  margin-left: 45px;
+  gap: 10px;
 }
 
 .container a:hover {
