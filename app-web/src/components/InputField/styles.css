@@ -1,0 +1,33 @@
+input{
+    padding: 10px;
+    background-color: #EEEEEE;
+    color: #737373;
+    border: 1px solid #737373;
+    border-radius: 10px;
+    width: 82%;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+label{
+    position: relative;
+    width: 100%;
+    display: flex;
+}
+
+input[type="file"]::file-selector-button{
+    background-color: #5652C7;
+    border: none;
+    color: #FFFFFF;
+    position: absolute;
+    top: 0;
+    left: 85%;
+    padding: 10px;
+    border-radius: 7px;
+    width: 15%;
+    cursor: pointer;
+}
+
+input[type="file"]::file-selector-text{
+    text-align: start;
+}
