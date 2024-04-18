@@ -28,11 +28,11 @@
             <div class="container-table-message" v-if="!fileInputValue">
                 <p>Para vizualizar os dados, selecione um arquivo para importar!</p>
             </div>
-            <Table
+            <TableComponent
                 :data-object="tableObject"
                 :data="data" 
                 v-if="data">
-            </Table>
+            </TableComponent>
         </div>
         <div class="container-button">
             <InputButton 
@@ -52,7 +52,7 @@ import '@/assets/styles/upload.css';
 import SelectField from '../components/SelectField/SelectField.vue';
 import InputField from '../components/InputField/InputField.vue';
 import InputButton from '../components/InputButton/InputButton.vue';
-import Table from '../components/Table/Table.vue'
+import TableComponent from '../components/Table/TableComponent.vue'
 import { ref } from 'vue';
 
 const countTypeValue = ref("");

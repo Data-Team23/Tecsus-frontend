@@ -1,6 +1,6 @@
 <template>
   <div>
-    <table v-if="paginatedData">
+    <table v-if="paginatedData"> <!-- Noncompliant -->
       <thead>
         <tr>
           <th v-for="(value, index) in paginatedData[0]" :key="index">{{ index }}</th>
