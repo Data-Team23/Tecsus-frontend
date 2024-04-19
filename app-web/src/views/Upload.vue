@@ -28,11 +28,11 @@
             <div class="container-table-message" v-if="!fileInputValue">
                 <p>Para vizualizar os dados, selecione um arquivo para importar!</p>
             </div>
-            <Table
+            <TableComponent
                 :data-object="tableObject"
                 :data="data" 
                 v-if="data">
-            </Table>
+            </TableComponent>
         </div>
         <div class="container-button">
             <InputButton 
@@ -52,11 +52,14 @@ import '@/assets/styles/upload.css';
 import SelectField from '../components/SelectField/SelectField.vue';
 import InputField from '../components/InputField/InputField.vue';
 import InputButton from '../components/InputButton/InputButton.vue';
-import Table from '../components/Table/Table.vue'
+import TableComponent from '../components/Table/TableComponent.vue'
 import { ref } from 'vue';
 
 const countTypeValue = ref("");
 const documentTypeValue = ref("");
+
+import { useToast } from 'vue-toastification';
+const toast = useToast();
 
 let countTypes = [
     {
@@ -135,16 +138,12 @@ const clearData = () => {
     documentTypeValue.value = null;
 };
 
-import { useToast } from 'vue-toastification';
-const toast = useToast();
-
 const uploadCSV = () => {
-  const toast = useToast();
 
   if (!fileInputValue) {
     toast.error('Selecione um arquivo CSS!', {
-      timeout: 3000, // Definindo um timeout de 3 segundos
-      position: 'bottom-center' // Posicionando o toast no centro inferior da tela
+      timeout: 3000,
+      position: 'bottom-center'
     });
     return;
   }
@@ -170,7 +169,7 @@ const uploadCSV = () => {
     position: 'bottom-center'
   });
 
-  fetch(`http://127.0.0.1:8000/api/contas/upload/${countTypeValue.value}/${documentTypeValue.value}/`, {
+  fetch(`http://127.0.0.1:8000/upload/${countTypeValue.value}/${documentTypeValue.value}/`, {
     method: 'POST',
     body: formData,
   })

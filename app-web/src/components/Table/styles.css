@@ -3,6 +3,10 @@ table {
     border-collapse: collapse;
 }
 
+table caption{
+    display: none;
+}
+
 th, td {
     border: 1px solid #dddddd;
     padding: 8px;
@@ -14,4 +18,12 @@ th, td {
 
 th {
     background-color: #f2f2f2;
+}
+
+.pagination-buttons {
+    margin-top: 20px;
+}
+
+.pagination-buttons button {
+    margin-right: 10px;
 }

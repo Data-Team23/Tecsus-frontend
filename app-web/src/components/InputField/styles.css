@@ -27,7 +27,3 @@ input[type="file"]::file-selector-button{
     width: 15%;
     cursor: pointer;
 }
-
-input[type="file"]::file-selector-text{
-    text-align: start;
-}
