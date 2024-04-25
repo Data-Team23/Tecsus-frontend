@@ -32,7 +32,7 @@ jobs:
             working-directory: app-web
 
           - name: Run tests
-            run: npm run test:unit
+            run: npm run test
             working-directory: app-web
 
         #   - name: Login Docker Hub
