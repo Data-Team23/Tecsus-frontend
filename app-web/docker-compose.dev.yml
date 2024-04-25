@@ -5,6 +5,7 @@ services:
     image: tecsus-frontend-image
     build: 
       context: .
+      dockerfile: Dockerfile.dev
     volumes:
       - .:/app
     ports: 
