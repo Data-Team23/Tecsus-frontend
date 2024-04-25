@@ -1,19 +1,18 @@
 <template>
   <div>
-    <div class="table-container">
-      <table v-if="paginatedData">
-        <thead>
-          <tr>
-            <th v-for="(value, index) in paginatedData[0]" :key="index">{{ index }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(row, index) in paginatedData" :key="index">
-            <td v-for="(value, key) in row" :key="key">{{ value }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <table v-if="paginatedData">
+      <caption>Dados importados</caption>
+      <thead>
+        <tr>
+          <th v-for="(value, index) in paginatedData[0]" :key="index">{{ index }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(row, index) in paginatedData" :key="index">
+          <td v-for="(value, key) in row" :key="key">{{ value }}</td>
+        </tr>
+      </tbody>
+    </table>
     <div class="pagination-buttons">
       <button @click="previousPage" :disabled="currentPage === 1">Anterior</button>
       <span>Página {{ currentPage }} de {{ totalPages }}</span>
@@ -21,7 +20,6 @@
     </div>
   </div>
 </template>
-
 
 <script setup>
 import { ref, watch, computed } from 'vue';
