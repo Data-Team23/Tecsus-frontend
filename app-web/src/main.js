@@ -9,6 +9,8 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
 
+import * as powerbi from 'powerbi-client';
+
 library.add(fas);
 
 createApp(App)

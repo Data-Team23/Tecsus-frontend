@@ -36,8 +36,8 @@ body {
   background-color: var(--cor-primaria);
   color: var(--cor-texto);
   width: 250px;
-  height: calc(100% - 52px);
-  position: fixed;
+  height: 100%;
+  position: absolute;
   top: 52px;
   left: 0;
   padding-top: 20px;

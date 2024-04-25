@@ -31,9 +31,9 @@
                     <i class="fa-solid fa-file-signature" style="color: #ffffff;"></i>
                     Contratos
                 </router-link>
-                <router-link to="/contas">
+                <router-link to="/dashboard">
                     <i class="fa-solid fa-file-invoice-dollar" style="color: #ffffff;"></i>
-                    Contas
+                    Dashboard
                 </router-link>
             </div>
         </div>
