@@ -25,12 +25,15 @@ jobs:
 
           - name: Install dependencies
             run: npm install
+            working-directory: app-web
 
           - name: Build project
             run: npm run build
+            working-directory: app-web
 
           - name: Run tests
             run: npm run test:unit
+            working-directory: app-web
 
         #   - name: Login Docker Hub
         #     run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_ACCESS_TOKEN}}
