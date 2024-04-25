@@ -7,6 +7,8 @@ on:
     pull_request: 
         branches: 
             - XP-35-build
+        types:
+            - closed
 
 jobs: 
     build:
