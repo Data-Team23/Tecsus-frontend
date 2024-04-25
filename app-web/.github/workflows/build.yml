@@ -1,0 +1,43 @@
+name: Build Application
+
+on: 
+    push:
+        branches: 
+            - XP-35-build
+    pull_request: 
+        branches: 
+            - XP-35-build
+
+jobs: 
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+          - name: Checkout repository
+            uses: actions/checkout@v4
+
+          - name: Setup Node.js
+            uses: actions/setup-node@v4
+            with: 
+                node-version: 18
+
+          - name: Install dependencies
+            run: npm install
+
+          - name: Build project
+            run: npm run build
+
+          - name: Run tests
+            run: npm run test:unit
+
+        #   - name: Login Docker Hub
+        #     run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_ACCESS_TOKEN}}
+
+        #   - name: Build Docker Image
+        #     run: docker build -t silasprd/vue-github-actions .
+
+        #   - name: Push Docker Image
+        #     run: docker push silasprd/vue-github-actions
+
+        
+
