@@ -23,3 +23,8 @@ th {
 .pagination-buttons button {
     margin-right: 10px;
 }
+
+.table-container {
+    max-height: 300px;
+    overflow-y: auto;
+}
