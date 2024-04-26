@@ -40,9 +40,13 @@ jobs:
 
           - name: Build Docker Image
             run: docker build -t datateam23/tecsus-frontend .
+            working-directory: app-web
+
 
           - name: Push Docker Image
             run: docker push datateam23/tecsus-frontend
+            working-directory: app-web
+
 
         
 
