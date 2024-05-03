@@ -3,8 +3,11 @@
     <table v-if="paginatedData">
       <caption>Dados importados</caption>
       <thead>
-        <tr>
+        <tr v-if="columnNames.length <= 0">
           <th v-for="(value, index) in paginatedData[0]" :key="index">{{ index }}</th>
+        </tr>
+        <tr v-if="columnNames.length > 0">
+          <th v-for="(name, index) in columnNames" :key="index">{{ name }}</th>
         </tr>
       </thead>
       <tbody>
@@ -33,6 +36,10 @@ const props = defineProps({
   itemsPerPage: {
     type: Number,
     default: 8
+  },
+  columnNames: {
+    type: Array,
+    default: () => []
   }
 });
 

@@ -9,8 +9,8 @@
         </div>
         <div class="table-container">
             <TableComponent
-                :data-object="tableObject"
-                :data="data">
+                :data="data"
+                :column-names="['ID Alerta', 'ID Usuário', 'Email Usuário', 'Consumo médio', 'Consumo atual', 'Conta']">
             </TableComponent>
         </div>
     </div>
@@ -38,8 +38,4 @@ axios.get(`${apiUrl}/alerta/listar`)
   .catch(error => {
     console.error('Erro ao carregar alertas:', error);
   });
-
-
-
-
 </script>

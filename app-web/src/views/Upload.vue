@@ -29,7 +29,6 @@
                 <p>Para visualizar os dados, selecione um arquivo para importar!</p>
             </div>
             <TableComponent
-                :data-object="tableObject"
                 :data="data" 
                 v-if="data">
             </TableComponent>
