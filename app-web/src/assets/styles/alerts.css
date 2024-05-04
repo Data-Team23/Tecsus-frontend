@@ -1,0 +1,31 @@
+@import url('global.css');
+.alerts-container{
+    margin-left: 60px;
+}
+
+.utilisense-logo{    
+    display: flex;
+    padding: 0 0 20px 20px;
+    justify-content: flex-start;
+}
+
+.title-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 70px;
+}
+
+.title-container h2{
+    margin-block: 0;
+    color: var(--cor-primaria);
+}
+
+.title-container h4{
+    margin-block: 10px;
+    color: var(--cor-hover);
+}
+
+.table-container{
+    padding: 30px 70px
+}
