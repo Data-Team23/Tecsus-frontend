@@ -31,10 +31,27 @@
                     <i class="fa-solid fa-file-signature" style="color: #ffffff;"></i>
                     Contratos
                 </router-link>
-                <router-link to="/contas">
+                <router-link to="/dashboard">
                     <i class="fa-solid fa-file-invoice-dollar" style="color: #ffffff;"></i>
-                    Contas
+                    Dashboard
                 </router-link>
+                <div class="nav-alert" to="/alerts">
+                    <div class="alert" :onClick="toggleAlertsLinks">
+                        <i class="fa-solid fa-triangle-exclamation" style="color: #ffffff;"></i>
+                        Alertas
+                        <i class="fa-sharp fa-solid fa-caret-down"></i>
+                    </div>
+                    <ul class="alert-list" v-if="alertLinks">
+                        <li>
+                            <i class="fa-solid fa-droplet"></i>
+                            <router-link to="/consumo-de-agua">Consumo de Água</router-link>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-lightbulb"></i>
+                            <router-link to="/consumo-de-energia">Consumo de Energia</router-link>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
         <router-view :class="{'view-dobrada': !dobrada}"></router-view>
@@ -47,8 +64,14 @@ import { ref } from 'vue';
 
 const dobrada = ref(false);
 
+const alertLinks = ref(false)
+
 const toggleDobrada = () => {
     dobrada.value = !dobrada.value; 
 };
+
+const toggleAlertsLinks = () => {
+    alertLinks.value = !alertLinks.value;
+}
 </script>"
 
