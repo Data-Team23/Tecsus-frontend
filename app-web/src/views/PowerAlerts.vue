@@ -30,7 +30,7 @@ const data = ref([])
 
 let tableObject = {};
 
-axios.get(`${apiUrl}/energia/alertas_energia`)
+axios.get(`${apiUrl}/alerta/alerta_energia/`)
   .then(response => {
     console.log(response.data);
     data.value = response.data
@@ -38,6 +38,4 @@ axios.get(`${apiUrl}/energia/alertas_energia`)
   .catch(error => {
     console.error('Erro ao carregar alertas:', error);
   });
-
-
 </script>
