@@ -1,4 +1,4 @@
-name: Unit Tests in Push
+name: Unit Tests
 
 on: 
     push:
@@ -10,8 +10,8 @@ on:
             - "dev"
 
 jobs: 
-    unit-tests-push:
-        name: Unit Tests (Push)
+    unit-tests:
+        name: Unit Tests
         runs-on: ubuntu-latest
 
         steps:
