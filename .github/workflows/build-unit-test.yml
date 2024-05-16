@@ -16,12 +16,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - &checkout_repository
-        name: Checkout repository
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - &setup_node
-        name: Setup Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
@@ -33,11 +31,13 @@ jobs:
     needs: setup
 
     steps:
-      - *checkout
-      - *setup_node
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - &install_dependencies
-        name: Install dependencies
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+
+      - name: Install dependencies
         run: npm install
         working-directory: app-web
     
@@ -50,9 +50,11 @@ jobs:
       - verify-dependencies
     
     steps:
-      - *checkout
-      - *setup_node
-      - *install_dependencies
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
       
       - name: Run Build project
         run: npm run build
@@ -68,9 +70,11 @@ jobs:
       - build-project
     
     steps:
-      - *checkout
-      - *setup_node
-      - *install_dependencies
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
 
       - name: Run tests
         run: npm run test
