@@ -1,0 +1,26 @@
+name: Build project
+
+on:
+  push:
+    branches:
+      - "*"
+
+  pull_request:
+    branches:
+      - "dev"
+      - "main"
+
+jobs:
+  build-project:
+    name: Build Project
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup Config
+        uses: .github/workflows/setup.yml
+
+      - name: Run Build project
+        run: npm run build
+        working-directory: app-web
+
+    
