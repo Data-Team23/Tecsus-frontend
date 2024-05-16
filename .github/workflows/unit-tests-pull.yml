@@ -1,32 +1,56 @@
 name: Unit Tests in Pull Requests to Dev
 
-on: 
-    pull_request:
-        branches: 
-            - "dev"
+on:
+  pull_request:
+    branches:
+      - "dev"
+      - "main"
 
-jobs: 
-    unit-tests:
-        name: Unit Tests
-        runs-on: ubuntu-latest
+jobs:
+  setup:
+    name: Verify Dependencies
+    runs-on: ubuntu-latest
 
-        steps:
-          - name: Checkout repository
-            uses: actions/checkout@v4
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-          - name: Setup Node.js
-            uses: actions/setup-node@v4
-            with: 
-                node-version: 18
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
 
-          - name: Install dependencies
-            run: npm install
-            working-directory: app-web
+  verify-dependencies:
+    name: Verify Dependencies
+    runs-on: ubuntu-latest
+    needs: setup
 
-          - name: Build project
-            run: npm run build
-            working-directory: app-web
+    steps:
+      - name: Install dependencies
+        run: npm install
+        working-directory: app-web
 
-          - name: Run tests
-            run: npm run test
-            working-directory: app-web
+  build-project:
+    name: Build project
+    runs-on: ubuntu-latest
+    needs:
+      - setup
+      - verify-dependencies
+
+    steps:
+      - name: Build project
+        run: npm run build
+        working-directory: app-web
+
+  unit-tests:
+    name: Unit Tests
+    runs-on: ubuntu-latest
+    needs:
+      - setup
+      - verify-dependencies
+      - build-project
+
+    steps:
+      - name: Run tests
+        run: npm run test
+        working-directory: app-web
