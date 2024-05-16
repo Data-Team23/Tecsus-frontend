@@ -12,7 +12,7 @@ on:
 
 jobs:
   build-unit-test: 
-    name: Setup Configuration
+    name: Build and Unit Test
     runs-on: ubuntu-latest
 
     steps:
