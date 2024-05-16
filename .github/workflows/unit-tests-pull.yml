@@ -8,7 +8,7 @@ on:
 
 jobs:
   setup:
-    name: Verify Dependencies
+    name: Setup Config
     runs-on: ubuntu-latest
 
     steps:
@@ -38,7 +38,7 @@ jobs:
       - verify-dependencies
 
     steps:
-      - name: Build project
+      - name: Run Build project
         run: npm run build
         working-directory: app-web
 
