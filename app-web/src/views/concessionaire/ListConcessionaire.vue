@@ -5,7 +5,7 @@
         </div>
         <div class="title-container">
             <div class="title">
-                <h2>CADASTRAR CONCESSIONÁRIAS</h2>
+                <h2>CONCESSIONÁRIAS</h2>
                 <h4>Tabela de concessionárias cadastradas</h4>
             </div>
             <div class="add-button">
