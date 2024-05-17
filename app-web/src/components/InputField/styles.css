@@ -10,9 +10,14 @@ input{
 }
 
 label{
+    align-items: flex-start;
+    flex-direction: column;
     position: relative;
     width: 100%;
     display: flex;
+    color: var(--cor-primaria);
+    font-weight: bolder;
+    font-size: 18px;
 }
 
 input[type="file"]::file-selector-button{

@@ -3,6 +3,8 @@ import UploadImage from '@/views/Upload.vue';
 import Dashboard from '@/views/Dashboard.vue'
 import PowerAlerts from '@/views/PowerAlerts.vue';
 import WaterAlerts from '@/views/WaterAlerts.vue';
+import ListConcessionaire from '@/views/concessionaire/ListConcessionaire.vue';
+import AddConcessionaire from '@/views/concessionaire/AddConcessionaire.vue';
 
 const routes = [
   {
@@ -24,6 +26,16 @@ const routes = [
     path: '/consumo-de-agua',
     name: 'Consumo de água',
     component: WaterAlerts
+  },
+  {
+    path: '/concessionarias',
+    name: 'Listar concessionárias',
+    component: ListConcessionaire
+  },
+  {
+    path: '/adicionar-concessionaria',
+    name: 'Adicionar concessionária',
+    component: AddConcessionaire
   }
 ];
 
