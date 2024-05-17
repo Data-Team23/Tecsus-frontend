@@ -1,5 +1,5 @@
 <template>
-    <div class="add-concessionaire-container">
+    <div class="add-container">
         <div class="utilisense-logo">
             <img src="@/assets/utilisense-logo.png" alt="">
         </div>
@@ -47,7 +47,7 @@
 <script setup>
 import InputField from '@/components/InputField/InputField.vue';
 import InputButton from '@/components/InputButton/InputButton.vue';
-import '@/assets/styles/concessionaire.css';
+import '@/assets/styles/list-create.css';
 
 
 

@@ -1,4 +1,4 @@
-.add-concessionaire-container form{
+.add-container form{
     margin: 30px 70px 70px 70px;
     width: 50%;
 }
@@ -17,6 +17,7 @@
 }
 
 .title-container h2{
+    text-align: start;
     margin-block: 0;
     color: var(--cor-primaria);
 }

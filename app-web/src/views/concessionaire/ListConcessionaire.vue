@@ -1,5 +1,5 @@
 <template>
-    <div class="create-concessionaire-container">
+    <div class="list-container">
         <div class="utilisense-logo">
             <img src="@/assets/utilisense-logo.png" alt="">
         </div>
@@ -25,7 +25,7 @@
 
 <script setup>
 import TableComponent from '@/components/Table/TableComponent.vue';
-import '@/assets/styles/concessionaire.css';
+import '@/assets/styles/list-create.css';
 import { ref } from 'vue';
 import axios from 'axios';
 import { useToast } from 'vue-toastification';
