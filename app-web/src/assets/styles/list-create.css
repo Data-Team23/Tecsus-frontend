@@ -3,6 +3,14 @@
     width: 50%;
 }
 
+.add-container{
+    height: 100vh;
+}
+
+.select-field-box{
+    width: 82%;
+}
+
 .input-button-container{
     display: flex;
     justify-content: flex-end;
