@@ -3,6 +3,32 @@
     width: 50%;
 }
 
+.select-supplier-type, .back-list-button{
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    margin-right: 70px;
+    align-items: center;
+}
+.back-list-button i{
+    font-size: 32px;
+    cursor: pointer;
+    color: var(--cor-primaria);
+}
+
+.back-list-button i:hover{
+    color: var(--cor-hover);
+}
+
+.select-supplier-type button{
+    color: white;
+    height: 60px;
+}
+
+.select-supplier-type button:first-child{
+    margin-right: 10px;
+}
+
 .input-button-container{
     display: flex;
     justify-content: flex-end;

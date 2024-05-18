@@ -3,8 +3,9 @@ import UploadImage from '@/views/Upload.vue';
 import Dashboard from '@/views/Dashboard.vue'
 import PowerAlerts from '@/views/PowerAlerts.vue';
 import WaterAlerts from '@/views/WaterAlerts.vue';
-import ListConcessionaire from '@/views/concessionaire/ListConcessionaire.vue';
-import AddConcessionaire from '@/views/concessionaire/AddConcessionaire.vue';
+import ListSupplier from '@/views/supplier/ListSupplier.vue';
+import AddSupplier from '@/views/supplier/AddSupplier.vue';
+import AddSupplierWater from '@/views/supplier/AddSupplierWater.vue';
 
 const routes = [
   {
@@ -28,14 +29,19 @@ const routes = [
     component: WaterAlerts
   },
   {
-    path: '/concessionarias',
-    name: 'Listar concessionárias',
-    component: ListConcessionaire
+    path: '/fornecedores',
+    name: 'Listar fornecedores',
+    component: ListSupplier
   },
   {
-    path: '/adicionar-concessionaria',
-    name: 'Adicionar concessionária',
-    component: AddConcessionaire
+    path: '/adicionar-fornecedor',
+    name: 'Adicionar fornecedor',
+    component: AddSupplier
+  },
+  {
+    path: '/adicionar-fornecedor-agua',
+    name: 'Adicionar fornecedor água',
+    component: AddSupplierWater
   }
 ];
 

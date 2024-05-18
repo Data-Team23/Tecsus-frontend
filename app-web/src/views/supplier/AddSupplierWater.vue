@@ -2,35 +2,38 @@
     <div class="add-container">
         <div class="utilisense-logo">
             <img src="@/assets/utilisense-logo.png" alt="">
+            <div class="back-list-button" @click="goBack()">
+                <i class="fa-solid fa-arrow-left"></i>
+            </div>
         </div>
         <div class="title-container">
             <div class="title">
-                <h2>CADASTRAR CONCESSIONÁRIAS</h2>
-                <h4>Formulário de cadastro de concessionárias</h4>
+                <h2>CADASTRAR FORNECEDORES DE ÁGUA</h2>
+                <h4>Formulário de cadastro de fornecedores</h4>
             </div>
         </div>
         <form action="" class="add-concessionaire-form">
             <InputField
-                label="NOME DA CONCESSIONÁRIA"
-                placeholder="Informe o nome"
+                label="NOME DO FORNECEDOR"
+                placeholder="Informe o nome do fornecedor"
                 type="text">
             </InputField>
             <br>
             <InputField
-                label="CEP"
-                placeholder="Informe o número do cep sem traços ou pontos"
-                type="text">
-            </InputField>
-            <br>
-            <InputField
-                label="ENDEREÇO"
-                placeholder="Informe o nome da rua e número"
+                label="COMPANHIA"
+                placeholder="Informe o código da companhia"
                 type="text">
             </InputField>
             <br>
             <InputField
                 label="PLANTA"
-                placeholder="Informe a sigla correspondente ao tipo de planta"
+                placeholder="Informe a planta"
+                type="text">
+            </InputField>
+            <br>
+            <InputField
+                label="RGI"
+                placeholder="Informe o código RGI"
                 type="text">
             </InputField>
             <br>
@@ -47,9 +50,13 @@
 <script setup>
 import InputField from '@/components/InputField/InputField.vue';
 import InputButton from '@/components/InputButton/InputButton.vue';
+import { useRouter } from 'vue-router';
 import '@/assets/styles/list-create.css';
 
+const router = useRouter();
 
-
+const goBack = () => {
+    router.go(-1)
+}
 
 </script>

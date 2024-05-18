@@ -2,22 +2,43 @@
     <div class="list-container">
         <div class="utilisense-logo">
             <img src="@/assets/utilisense-logo.png" alt="">
+            <div class="select-supplier-type">
+                <button
+                    @click="selectSupplierType('ÁGUA')">
+                    ÁGUA
+                    <i class="fa-solid fa-droplet"></i>
+                </button>
+                <button
+                    @click="selectSupplierType('ENERGIA')">
+                    ENERGIA
+                    <i class="fa-solid fa-lightbulb"></i>
+                </button>
+            </div>
         </div>
         <div class="title-container">
             <div class="title">
-                <h2>CONCESSIONÁRIAS</h2>
-                <h4>Tabela de concessionárias cadastradas</h4>
+                <h2>FORNECEDORES DE {{ supplierTypeValue }}</h2>
+                <h4>Tabela de fornecedores cadastradas</h4>
             </div>
             <div class="add-button">
-                <router-link to="/adicionar-concessionaria">
+                <router-link to="/adicionar-fornecedor" v-if="supplierTypeValue == 'ENERGIA'">
+                    <i class="fa-solid fa-plus"></i>
+                </router-link>
+                <router-link to="/adicionar-fornecedor-agua" v-if="supplierTypeValue == 'ÁGUA'">
                     <i class="fa-solid fa-plus"></i>
                 </router-link>
             </div>
         </div>
         <div class="table-container">
             <TableComponent
+                v-if="supplierTypeValue == 'ENERGIA'"
                 :data="data"
-                :column-names="['Concessionária', 'CEP', 'Endereço', 'Planta']">
+                :column-names="['Fornecedor', 'Cód. Companhia', 'Planta']">
+            </TableComponent>
+            <TableComponent
+                v-if="supplierTypeValue == 'ÁGUA'"
+                :data="data"
+                :column-names="['Fornecedor', 'Cód. Companhia', 'Planta']">
             </TableComponent>
         </div>
     </div>
@@ -54,6 +75,12 @@ const data = ref([
         "planta": "CO"
     }
 ])
+
+const supplierTypeValue = ref('ÁGUA')
+
+const selectSupplierType = (type) => {
+    supplierTypeValue.value = type
+}
 
 // axios.get(`${apiUrl}/concessionaires.json`)
 //   .then(response => {
