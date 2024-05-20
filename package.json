@@ -2,16 +2,13 @@
   "name": "app-web",
   "version": "0.1.0",
   "private": true,
-  "babel": {
-    "presets": [
-      "@babel/preset-env"
-    ]
-  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "test:unit": "vue-cli-service test:unit",
+    "commit": "cz",
     "test": "jest",
-    "commit": "cz"
+    "prepare": "husky install"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.5.1",
@@ -28,11 +25,19 @@
   "devDependencies": {
     "@babel/core": "^7.12.16",
     "@vue/cli-plugin-babel": "~5.0.0",
-    "@vue/cli-plugin-unit-jest": "^5.0.8",
+    "@vue/cli-plugin-unit-jest": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
     "@vue/test-utils": "^2.4.5",
+    "@vue/vue3-jest": "^27.0.0-alpha.1",
+    "babel-jest": "^27.0.6",
     "cz-conventional-changelog": "^3.3.0",
+    "husky": "^8.0.0",
     "jest": "^27.5.1"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
   },
   "browserslist": [
     "> 1%",
