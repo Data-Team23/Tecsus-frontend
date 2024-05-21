@@ -6,6 +6,8 @@ import WaterAlerts from '@/views/WaterAlerts.vue';
 import ListSupplier from '@/views/supplier/ListSupplier.vue';
 import AddSupplier from '@/views/supplier/AddSupplier.vue';
 import AddSupplierWater from '@/views/supplier/AddSupplierWater.vue';
+import ListContract from '@/views/contract/ListContract.vue';
+import AddContract from '@/views/contract/AddContract.vue';
 
 const routes = [
   {
@@ -42,6 +44,16 @@ const routes = [
     path: '/adicionar-fornecedor-agua',
     name: 'Adicionar fornecedor água',
     component: AddSupplierWater
+  },
+  {
+    path: '/contratos',
+    name: 'Listar contratos',
+    component: ListContract
+  },
+  {
+    path: '/adicionar-contrato',
+    name: 'Adicionar contrato',
+    component: AddContract
   }
 ];
 

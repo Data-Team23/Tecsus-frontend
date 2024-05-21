@@ -10,6 +10,7 @@
     margin-right: 70px;
     align-items: center;
 }
+
 .back-list-button i{
     font-size: 32px;
     cursor: pointer;
@@ -27,6 +28,14 @@
 
 .select-supplier-type button:first-child{
     margin-right: 10px;
+}
+
+.add-container{
+    height: 100vh;
+}
+
+.select-field-box{
+    width: 82%;
 }
 
 .input-button-container{
