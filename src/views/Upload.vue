@@ -162,13 +162,14 @@ const uploadCSV = () => {
   }
 
   const formData = new FormData();
-  formData.append('file', fileInputValue);
+  formData.append('tipo_documento', documentTypeValue.value);
+  formData.append('arquivo_csv', fileInputValue);
 
   toast.info('Salvando arquivo CSV...', {
     position: 'bottom-center'
   });
 
-  fetch(`http://127.0.0.1:8000/upload/${countTypeValue.value}/${documentTypeValue.value}/`, {
+  fetch(`http://127.0.0.1:8000/api/${countTypeValue.value}/upload/`, {
     method: 'POST',
     body: formData,
   })

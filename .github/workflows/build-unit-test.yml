@@ -26,15 +26,12 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: app-web
       
       - name: Run Build project
         run: npm run build
-        working-directory: app-web
       
       - name: Run tests
         run: npm run test
-        working-directory: app-web
 
 
       
