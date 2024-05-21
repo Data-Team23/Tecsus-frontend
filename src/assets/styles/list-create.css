@@ -1,0 +1,47 @@
+.add-container form{
+    margin: 30px 70px 70px 70px;
+    width: 50%;
+}
+
+.add-container{
+    height: 100vh;
+}
+
+.select-field-box{
+    width: 82%;
+}
+
+.input-button-container{
+    display: flex;
+    justify-content: flex-end;
+    width: 82%;
+}
+
+.title-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 75px;
+}
+
+.title-container h2{
+    text-align: start;
+    margin-block: 0;
+    color: var(--cor-primaria);
+}
+
+.title-container h4{
+    text-align: start;
+    margin-block: 10px;
+    color: var(--cor-hover);
+}
+
+.add-button i{
+    font-size: 28px;
+    color: var(--cor-hover);
+    cursor: pointer;
+}
+
+.add-button i:hover{
+    color: var(--cor-primaria);
+}

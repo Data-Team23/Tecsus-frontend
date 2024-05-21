@@ -3,6 +3,8 @@ import UploadImage from '@/views/Upload.vue';
 import Dashboard from '@/views/Dashboard.vue'
 import PowerAlerts from '@/views/PowerAlerts.vue';
 import WaterAlerts from '@/views/WaterAlerts.vue';
+import ListContract from '@/views/contract/ListContract.vue';
+import AddContract from '@/views/contract/AddContract.vue';
 
 const routes = [
   {
@@ -24,6 +26,16 @@ const routes = [
     path: '/consumo-de-agua',
     name: 'Consumo de água',
     component: WaterAlerts
+  },
+  {
+    path: '/contratos',
+    name: 'Listar contratos',
+    component: ListContract
+  },
+  {
+    path: '/adicionar-contrato',
+    name: 'Adicionar contrato',
+    component: AddContract
   }
 ];
 
