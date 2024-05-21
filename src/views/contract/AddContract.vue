@@ -2,6 +2,9 @@
     <div class="add-container">
         <div class="utilisense-logo">
             <img src="@/assets/utilisense-logo.png" alt="">
+            <div class="back-list-button" @click="goBack()">
+                <i class="fa-solid fa-arrow-left"></i>
+            </div>
         </div>
         <div class="title-container">
             <div class="title">
@@ -71,6 +74,7 @@ import InputField from '@/components/InputField/InputField.vue';
 import SelectField from '@/components/SelectField/SelectField.vue';
 import InputButton from '@/components/InputButton/InputButton.vue';
 import { ref } from 'vue'
+import { useRouter } from 'vue-router';
 import '@/assets/styles/list-create.css';
 
 let contractType = [
@@ -85,6 +89,12 @@ let contractType = [
         value: 'energia'
     }
 ]; 
+
+const router = useRouter();
+
+const goBack = () => {
+    router.go(-1)
+}
 
 const contractTypeValue = ref("");
 

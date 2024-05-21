@@ -3,8 +3,8 @@ import UploadImage from '@/views/Upload.vue';
 import Dashboard from '@/views/Dashboard.vue'
 import PowerAlerts from '@/views/PowerAlerts.vue';
 import WaterAlerts from '@/views/WaterAlerts.vue';
-import ListContract from '@/views/contracts/ListContract.vue';
-import AddContract from '@/views/contracts/AddContract.vue';
+import ListContract from '@/views/contract/ListContract.vue';
+import AddContract from '@/views/contract/AddContract.vue';
 
 const routes = [
   {
