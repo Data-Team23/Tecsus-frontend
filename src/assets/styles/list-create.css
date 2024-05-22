@@ -1,5 +1,5 @@
 .add-container form{
-    margin: 30px 70px 70px 70px;
+    padding: 30px 70px 70px 70px;
     width: 50%;
 }
 
@@ -28,10 +28,6 @@
 
 .select-supplier-type button:first-child{
     margin-right: 10px;
-}
-
-.add-container{
-    height: 100vh;
 }
 
 .select-field-box{

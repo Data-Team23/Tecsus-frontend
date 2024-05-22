@@ -17,14 +17,14 @@
         </div>
         <div class="title-container">
             <div class="title">
-                <h2>FORNECEDORES DE {{ supplierTypeValue }}</h2>
-                <h4>Tabela de fornecedores cadastradas</h4>
+                <h2>CLIENTES {{ supplierTypeValue }}</h2>
+                <h4>Tabela de clientes cadastrados</h4>
             </div>
             <div class="add-button">
-                <router-link to="/adicionar-fornecedor-energia" v-if="supplierTypeValue == 'ENERGIA'">
+                <router-link to="/adicionar-cliente-energia" v-if="supplierTypeValue == 'ENERGIA'">
                     <i class="fa-solid fa-plus"></i>
                 </router-link>
-                <router-link to="/adicionar-fornecedor-agua" v-if="supplierTypeValue == 'ÁGUA'">
+                <router-link to="/adicionar-cliente-agua" v-if="supplierTypeValue == 'ÁGUA'">
                     <i class="fa-solid fa-plus"></i>
                 </router-link>
             </div>
@@ -33,12 +33,12 @@
             <TableComponent
                 v-if="supplierTypeValue == 'ENERGIA'"
                 :data="data"
-                :column-names="['Fornecedor', 'Cód. Companhia', 'Planta']">
+                :column-names="['Contrato', 'Email', 'Ativo?', 'Nº Contrato', 'Nº Cliente']">
             </TableComponent>
             <TableComponent
                 v-if="supplierTypeValue == 'ÁGUA'"
                 :data="data"
-                :column-names="['Fornecedor', 'Cód. Companhia', 'Planta']">
+                :column-names="['Contrato', 'Email', 'Ativo?', 'Nº Contrato', 'Nº Cliente']">
             </TableComponent>
         </div>
     </div>
@@ -57,23 +57,26 @@ const apiUrl = 'http://localhost:8000/api'
 
 const data = ref([
     {
-        "name": "Concessionaria 1",
-        "cep": "12224-015",
-        "endereco": "Rua, XXXXXXXXXXX, 230",
-        "planta": "CO"
+        "name": "CLIENTE 1",
+        "email": "cliente@gmail.com",
+        "ativo": "Sim",
+        "numero_contrato": "123809",
+        "numero_cliente": "1203980",
     },
     {
-        "name": "Concessionaria 2",
-        "cep": "12224-016",
-        "endereco": "Rua, XXXXXXXXXXX, 231",
-        "planta": "CO"
+        "name": "CLIENTE 2",
+        "email": "cliente@gmail.com",
+        "ativo": "Sim",
+        "numero_contrato": "123809",
+        "numero_cliente": "1203980",
     },
     {
-        "name": "Concessionaria 3",
-        "cep": "12224-017",
-        "endereco": "Rua, XXXXXXXXXXX, 232",
-        "planta": "CO"
-    }
+        "name": "CLIENTE 2",
+        "email": "cliente@gmail.com",
+        "ativo": "Sim",
+        "numero_contrato": "123809",
+        "numero_cliente": "1203980",
+    },
 ])
 
 const supplierTypeValue = ref('ÁGUA')
@@ -85,7 +88,9 @@ const selectSupplierType = (type) => {
     if(type == 'ENERGIA') supplierUrlTypeValue.value = 'energia'
 }
 
-// axios.get(`${apiUrl}/${supplierUrlTypeValue}/fornecedores_${supplierUrlTypeValue}`)
+
+
+// axios.get(`${apiUrl}/${supplierUrlTypeValue}/clientes_contratos`)
 //   .then(response => {
 //     console.log(response.data);
 //     data.value = response.data
