@@ -16,24 +16,14 @@
             <InputField
                 label="NOME DO FORNECEDOR"
                 placeholder="Informe o nome do fornecedor"
+                v-model="fornecedorValue"
                 type="text">
             </InputField>
             <br>
             <InputField
-                label="COMPANHIA"
-                placeholder="Informe o código da companhia"
-                type="text">
-            </InputField>
-            <br>
-            <InputField
-                label="PLANTA"
-                placeholder="Informe a planta"
-                type="text">
-            </InputField>
-            <br>
-            <InputField
-                label="RGI"
-                placeholder="Informe o código RGI"
+                label="CONTRATO"
+                placeholder="Informe o número do contrato"
+                v-model="contratoValue"
                 type="text">
             </InputField>
             <br>
@@ -51,9 +41,25 @@
 import InputField from '@/components/InputField/InputField.vue';
 import InputButton from '@/components/InputButton/InputButton.vue';
 import { useRouter } from 'vue-router';
+import { ref } from 'vue';
 import '@/assets/styles/list-create.css';
 
 const router = useRouter();
+const fornecedorValue = ref();
+const contratoValue = ref();
+
+// const criarFornecedor = async () => {
+//     const fornecedorData = {
+//         fornecedor: fornecedorValue.value,
+//         num_contrato: contratoValue.value,
+//     }
+//     try {
+//         const response = axios.post(`${apiUrl}/energia/fornecedor_energia`, fornecedorData)
+//         console.log('Resposta da API:', response.data);
+//     } catch (error) {
+//         console.log('Erro: ', error)
+//     }
+// }
 
 const goBack = () => {
     router.go(-1)
