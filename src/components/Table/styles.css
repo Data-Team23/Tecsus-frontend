@@ -32,3 +32,11 @@ th {
     max-height: 300px;
     overflow-y: auto;
 }
+
+.edit-icon{
+    cursor: pointer;
+}
+
+.edit-icon:hover{
+    color: var(--cor-hover)
+}

@@ -23,11 +23,11 @@
                     <i class="fa-solid fa-box" style="color: #ffffff;"></i>
                     Unidades
                 </router-link>
-                <router-link to="/fornecedores">
+                <router-link to="/fornecedores-agua">
                     <i class="fa-solid fa-building" style="color: #ffffff;"></i>
                     Fornecedores
                 </router-link>
-                <router-link to="/clientes">
+                <router-link to="/clientes-agua">
                     <i class="fa-solid fa-building" style="color: #ffffff;"></i>
                     Clientes
                 </router-link>

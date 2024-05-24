@@ -5,14 +5,22 @@
       <thead>
         <tr v-if="columnNames.length <= 0">
           <th v-for="(value, index) in paginatedData[0]" :key="index">{{ index }}</th>
+          <th v-if="showEditColumn"></th>
         </tr>
         <tr v-if="columnNames.length > 0">
           <th v-for="(name, index) in columnNames" :key="index">{{ name }}</th>
+          <th v-if="showEditColumn"></th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(row, index) in paginatedData" :key="index">
+        <tr v-if="displayColumns.length <= 0" v-for="(row, index) in paginatedData" :key="index">
           <td v-for="(value, key) in row" :key="key">{{ value }}</td>
+        </tr>
+        <tr v-if="displayColumns.length > 0" v-for="(row, index) in paginatedData" :key="index">
+          <td v-for="(name, colIndex) in displayColumns" :key="colIndex">{{ row[name] }}</td>
+          <td v-if="showEditColumn" class="edit-icon" @click="editRow(row, idPropName)">
+            <i class="fa-regular fa-pen-to-square"></i>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -27,6 +35,10 @@
 <script setup>
 import { ref, watch, computed } from 'vue';
 import "./styles.css"
+import { useRouter, useRoute } from 'vue-router';
+
+const router = useRouter();
+const route = useRoute();
 
 const props = defineProps({
   data: {
@@ -40,6 +52,18 @@ const props = defineProps({
   columnNames: {
     type: Array,
     default: () => []
+  },
+  showEditColumn: {
+    type: Boolean,
+    default: false
+  },
+  displayColumns: {
+    type: Array,
+    default: () => []
+  },
+  idPropName: {
+    type: String,
+    default: 'id'
   }
 });
 
@@ -67,6 +91,13 @@ const previousPage = () => {
   if (currentPage.value > 1) {
     currentPage.value--;
   }
+};
+
+const editRow = (row, idPropName) => {
+  const idValue = row[idPropName]
+  const currentPath = route.fullPath;
+  const newPath = `${currentPath}/${idValue}`;
+  router.push(newPath);
 };
 
 watch(currentPage, () => {

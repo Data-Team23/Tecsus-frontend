@@ -3,42 +3,38 @@
         <div class="utilisense-logo">
             <img src="@/assets/utilisense-logo.png" alt="">
             <div class="select-supplier-type">
-                <button
-                    @click="selectSupplierType('ÁGUA')">
-                    ÁGUA
-                    <i class="fa-solid fa-droplet"></i>
-                </button>
-                <button
-                    @click="selectSupplierType('ENERGIA')">
-                    ENERGIA
-                    <i class="fa-solid fa-lightbulb"></i>
-                </button>
+                <router-link to="/clientes-agua">
+                    <button>
+                        ÁGUA
+                        <i class="fa-solid fa-droplet"></i>
+                    </button>
+                </router-link>
+                <router-link to="/clientes-ENERGIA">
+                    <button>
+                        ENERGIA
+                        <i class="fa-solid fa-lightbulb"></i>
+                    </button>
+                </router-link>
             </div>
         </div>
         <div class="title-container">
             <div class="title">
-                <h2>CLIENTES {{ supplierTypeValue }}</h2>
+                <h2>CLIENTES ENERGIA</h2>
                 <h4>Tabela de clientes cadastrados</h4>
             </div>
             <div class="add-button">
-                <router-link to="/adicionar-cliente-energia" v-if="supplierTypeValue == 'ENERGIA'">
-                    <i class="fa-solid fa-plus"></i>
-                </router-link>
-                <router-link to="/adicionar-cliente-agua" v-if="supplierTypeValue == 'ÁGUA'">
+                <router-link to="/adicionar-cliente-agua">
                     <i class="fa-solid fa-plus"></i>
                 </router-link>
             </div>
         </div>
         <div class="table-container">
             <TableComponent
-                v-if="supplierTypeValue == 'ENERGIA'"
-                :data="data"
-                :column-names="['Contrato', 'Email', 'Ativo?', 'Nº Contrato', 'Nº Cliente']">
-            </TableComponent>
-            <TableComponent
-                v-if="supplierTypeValue == 'ÁGUA'"
-                :data="data"
-                :column-names="['Contrato', 'Email', 'Ativo?', 'Nº Contrato', 'Nº Cliente']">
+                :id-prop-name="'id'"
+                :show-edit-column="true"
+                :column-names="['Contrato', 'Email', 'Ativo?', 'Nº Contrato', 'Nº Cliente']"
+                :display-columns="['name', 'email', 'ativo', 'numero_contrato', 'numero_cliente']"
+                :data="data">
             </TableComponent>
         </div>
     </div>
@@ -52,7 +48,6 @@ import axios from 'axios';
 import { useToast } from 'vue-toastification';
 
 const toast = useToast();
-
 const apiUrl = 'http://localhost:8000/api'
 
 const data = ref([
@@ -62,6 +57,7 @@ const data = ref([
         "ativo": "Sim",
         "numero_contrato": "123809",
         "numero_cliente": "1203980",
+        "id": "1"
     },
     {
         "name": "CLIENTE 2",
@@ -69,28 +65,20 @@ const data = ref([
         "ativo": "Sim",
         "numero_contrato": "123809",
         "numero_cliente": "1203980",
+        "id": "2"
     },
     {
-        "name": "CLIENTE 2",
+        "name": "CLIENTE 3",
         "email": "cliente@gmail.com",
         "ativo": "Sim",
         "numero_contrato": "123809",
         "numero_cliente": "1203980",
+        "id": "3"
     },
 ])
 
-const supplierTypeValue = ref('ÁGUA')
-const supplierUrlTypeValue = ref('agua')
 
-const selectSupplierType = (type) => {
-    supplierTypeValue.value = type
-    if(type == 'ÁGUA') supplierUrlTypeValue.value = 'agua'
-    if(type == 'ENERGIA') supplierUrlTypeValue.value = 'energia'
-}
-
-
-
-// axios.get(`${apiUrl}/${supplierUrlTypeValue}/clientes_contratos`)
+// axios.get(`${apiUrl}/energia/clientes_energia`)
 //   .then(response => {
 //     console.log(response.data);
 //     data.value = response.data
