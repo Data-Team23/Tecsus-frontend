@@ -3,12 +3,18 @@ import UploadImage from '@/views/Upload.vue';
 import Dashboard from '@/views/Dashboard.vue'
 import PowerAlerts from '@/views/PowerAlerts.vue';
 import WaterAlerts from '@/views/WaterAlerts.vue';
-import ListSupplier from '@/views/supplier/ListSupplier.vue';
 import AddSupplierPower from '@/views/supplier/AddSupplierPower.vue';
 import AddSupplierWater from '@/views/supplier/AddSupplierWater.vue';
-import ListClient from '@/views/client/ListClient.vue';
 import AddClientWater from '@/views/client/AddClientWater.vue';
 import AddClientPower from '@/views/client/AddClientPower.vue';
+import EditClientWater from '@/views/client/EditClientWater.vue';
+import ListClientWater from '@/views/client/ListClientWater.vue';
+import ListClientPower from '@/views/client/ListClientPower.vue';
+import ListSupplierWater from '@/views/supplier/ListSupplierWater.vue';
+import ListSupplierPower from '@/views/supplier/ListSupplierPower.vue';
+import EditSupplierPower from '@/views/supplier/EditSupplierPower.vue';
+import EditSupplierWater from '@/views/supplier/EditSupplierWater.vue';
+import EditClientPower from '@/views/client/EditClientPower.vue';
 
 const routes = [
   {
@@ -32,14 +38,14 @@ const routes = [
     component: WaterAlerts
   },
   {
-    path: '/fornecedores',
-    name: 'Listar fornecedores',
-    component: ListSupplier
+    path: '/fornecedores-agua',
+    name: 'Listar fornecedores água',
+    component: ListSupplierWater
   },
   {
-    path: '/adicionar-fornecedor-energia',
-    name: 'Adicionar fornecedor energia',
-    component: AddSupplierPower
+    path: '/fornecedores-agua/:id',
+    name: 'Editar fornecedores água',
+    component: EditSupplierWater
   },
   {
     path: '/adicionar-fornecedor-agua',
@@ -47,9 +53,24 @@ const routes = [
     component: AddSupplierWater
   },
   {
-    path: '/clientes',
-    name: 'Listar clientes',
-    component: ListClient
+    path: '/fornecedores-energia',
+    name: 'Listar fornecedores energia',
+    component: ListSupplierPower
+  },
+  {
+    path: '/fornecedores-energia/:id',
+    name: 'Editar fornecedores energia',
+    component: EditSupplierPower
+  },
+  {
+    path: '/adicionar-fornecedor-energia',
+    name: 'Adicionar fornecedor energia',
+    component: AddSupplierPower
+  },
+  {
+    path: '/clientes-agua',
+    name: 'Listar clientes água',
+    component: ListClientWater
   },
   {
     path: '/adicionar-cliente-agua',
@@ -57,10 +78,30 @@ const routes = [
     component: AddClientWater
   },
   {
+    path: '/clientes-agua/:id',
+    name: 'Editar cliente água',
+    component: EditClientWater
+  },
+  {
+    path: '/clientes-energia',
+    name: 'Listar clientes energia',
+    component: ListClientPower
+  },
+  {
+    path: '/clientes-energia/:id',
+    name: 'Editar clientes energia',
+    component: EditClientPower
+  },
+  {
     path: '/adicionar-cliente-energia',
     name: 'Adicionar cliente energia',
     component: AddClientPower
   },
+  {
+    path: '/clientes-energia/:id',
+    name: 'Editar cliente energia',
+    component: EditSupplierPower
+  }
 ];
 
 const router = createRouter({
