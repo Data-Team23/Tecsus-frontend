@@ -23,13 +23,13 @@
                     <i class="fa-solid fa-box" style="color: #ffffff;"></i>
                     Unidades
                 </router-link>
-                <router-link to="/concessionarias">
+                <router-link to="/fornecedores">
                     <i class="fa-solid fa-building" style="color: #ffffff;"></i>
-                    Concessionárias
+                    Fornecedores
                 </router-link>
-                <router-link to="/contratos">
-                    <i class="fa-solid fa-file-signature" style="color: #ffffff;"></i>
-                    Contratos
+                <router-link to="/clientes">
+                    <i class="fa-solid fa-building" style="color: #ffffff;"></i>
+                    Clientes
                 </router-link>
                 <router-link to="/dashboard">
                     <i class="fa-solid fa-file-invoice-dollar" style="color: #ffffff;"></i>

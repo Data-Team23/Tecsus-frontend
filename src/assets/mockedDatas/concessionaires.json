@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Concessionaria 1",
+        "cep": "12224-015",
+        "endereco": "Rua, XXXXXXXXXXX, 230",
+        "planta": "CO"
+    },
+    {
+        "name": "Concessionaria 2",
+        "cep": "12224-016",
+        "endereco": "Rua, XXXXXXXXXXX, 231",
+        "planta": "CO"
+    },
+    {
+        "name": "Concessionaria 3",
+        "cep": "12224-017",
+        "endereco": "Rua, XXXXXXXXXXX, 232",
+        "planta": "CO"
+    }
+]

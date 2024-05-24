@@ -1,0 +1,70 @@
+.add-container form{
+    padding: 30px 70px 70px 70px;
+    width: 50%;
+}
+
+.select-supplier-type, .back-list-button{
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    margin-right: 70px;
+    align-items: center;
+}
+
+.back-list-button i{
+    font-size: 32px;
+    cursor: pointer;
+    color: var(--cor-primaria);
+}
+
+.back-list-button i:hover{
+    color: var(--cor-hover);
+}
+
+.select-supplier-type button{
+    color: white;
+    height: 60px;
+}
+
+.select-supplier-type button:first-child{
+    margin-right: 10px;
+}
+
+.select-field-box{
+    width: 82%;
+}
+
+.input-button-container{
+    display: flex;
+    justify-content: flex-end;
+    width: 82%;
+}
+
+.title-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 75px;
+}
+
+.title-container h2{
+    text-align: start;
+    margin-block: 0;
+    color: var(--cor-primaria);
+}
+
+.title-container h4{
+    text-align: start;
+    margin-block: 10px;
+    color: var(--cor-hover);
+}
+
+.add-button i{
+    font-size: 28px;
+    color: var(--cor-hover);
+    cursor: pointer;
+}
+
+.add-button i:hover{
+    color: var(--cor-primaria);
+}
