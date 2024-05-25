@@ -22,7 +22,7 @@
             <br>
             <InputField
                 label="Nº CONTRATO"
-                placeholder="Informe o código RGI"
+                placeholder="Informe o número do contrato"
                 v-model="numContratoValue"
                 type="text">
             </InputField>
@@ -72,7 +72,7 @@
             <div class="input-button-container">
                 <InputButton 
                     :textButton="'Salvar'" 
-                    :onClick="console.log('Botão input acionado')">
+                    :onClick="updateClient">
                 </InputButton>
             </div>
         </form>
@@ -80,18 +80,26 @@
 </template>
 
 <script setup>
+import axios from 'axios';
 import { useRoute, useRouter } from 'vue-router'
 import InputField from '@/components/InputField/InputField.vue';
 import InputButton from '@/components/InputButton/InputButton.vue';
 import { ref } from 'vue';
 import '@/assets/styles/list-create.css';
+import { useToast } from 'vue-toastification';
+
+const apiUrl = 'http://localhost:8000/api'
+
+const toast = useToast()
 
 const router = useRouter();
 const route = useRoute();
 
+const clienteId = route.params.id
 const contratoValue = ref();
 const numContratoValue = ref();
 const numClienteValue = ref();
+const numInstalacaoValue = ref();
 const emailValue = ref();
 const grupoValue = ref();
 const pagValue = ref();
@@ -99,21 +107,54 @@ const plantaValue = ref();
 const ativoValue = ref();
 
 
-// axios.get(`${apiUrl}/energia/fornecedores_energia/${fornecedorId}`)
-//   .then(response => {
-//     fornecedor.value = response.fornecedor
-//     num_contrato.value = response.num_contrato
-//   })
-//   .catch(error => {
-//     console.error('Erro ao carregar alertas:', error);
-//   });
+axios.get(`${apiUrl}/energia/clientes_contratos/${clienteId}`)
+  .then(response => {
+    contratoValue.value = response.data.nome_contrato
+    emailValue.value = response.data.email
+    ativoValue.value = response.data.ativo
+    numContratoValue.value = response.data.num_contrato
+    numClienteValue.value = response.data.num_cliente
+    numInstalacaoValue.value = response.data.num_instalacao
+    grupoValue.value = response.data.grupo
+    pagValue.value = response.data.forma_pagamento
+    plantaValue.value = response.data.planta
+  })
+  .catch(error => {
+    toast.error('Erro ao carregar dados do fornecedor', {
+        position: 'bottom-center'
+    })
+  });
 
-// console.log("id do fornecedor: ", fornecedorId)
+const updateClient = async () => {
+    event.preventDefault()
+    const clienteData = {
+        nome_contrato: contratoValue.value,
+        email: emailValue.value,
+        ativo: ativoValue.value,
+        num_contrato: numContratoValue.value,
+        num_cliente: numClienteValue.value,
+        num_instalacao: numInstalacaoValue.value,
+        grupo: grupoValue.value,
+        forma_pagamento: pagValue.value,
+        planta: plantaValue.value
+    }
+    console.log(clienteData)
+    try {
+        await axios.put(`${apiUrl}/energia/clientes_contratos/${clienteId}`, clienteData);
+        toast.success('Cliente atualizado com sucesso!', {
+            position: 'bottom-center'
+        });
+    } catch (error) {
+        toast.error('Erro ao atualizar cliente', {
+            position: 'bottom-center'
+        });
+    }
+}
 
 const goBack = () => {
     router.go(-1)
 }
 
-console.log(route.params.id)
+console.log(clienteId)
 
 </script>

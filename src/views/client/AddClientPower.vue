@@ -35,6 +35,13 @@ ia<template>
             </InputField>
             <br>    
             <InputField
+                label="Nº INSTALAÇÃO"
+                placeholder="Informe o número da instalação"
+                v-model="numInstalacaoValue"
+                type="text">
+            </InputField>
+            <br>    
+            <InputField
                 label="EMAIL"
                 placeholder="example@gmail.com"
                 v-model="emailValue"
@@ -72,7 +79,7 @@ ia<template>
             <div class="input-button-container">
                 <InputButton 
                     :textButton="'Salvar'" 
-                    :onClick="console.log('Botão input acionado')">
+                    :onClick="criarCliente">
                 </InputButton>
             </div>
         </form>
@@ -80,43 +87,71 @@ ia<template>
 </template>
 
 <script setup>
+import axios from 'axios';
 import InputField from '@/components/InputField/InputField.vue';
 import InputButton from '@/components/InputButton/InputButton.vue';
 import { useRouter } from 'vue-router';
 import { ref } from 'vue';
 import '@/assets/styles/list-create.css';
+import { useToast } from 'vue-toastification';
+
+const apiUrl = 'http://localhost:8000/api'
+
+const toast = useToast()
 
 const router = useRouter();
 const contratoValue = ref();
 const numContratoValue = ref();
 const numClienteValue = ref();
+const numInstalacaoValue = ref();
 const emailValue = ref();
 const grupoValue = ref();
 const pagValue = ref();
 const plantaValue = ref();
 const ativoValue = ref();
 
-// const criarCliente = async () => {
-//     const clienteData = {
-//         nome_contrato: contratoValue.value,
-//         email: emailValue.value,
-//         ativo: ativoValue.value,
-//         num_contrato: numContratoValue.value,
-//         num_cliente: numClienteValue.value,
-//         grupo: grupoValue.value,
-//         forma_pagamento: pagValue.value,
-//         planta: plantaValue.value
-//     }
-//     try {
-//         const response = axios.post(`${apiUrl}/energia/cliente_energia`, clienteData)
-//         console.log('Resposta da API:', response.data);
-//     } catch (error) {
-//         console.log('Erro: ', error)
-//     }
-// }
+const criarCliente = async () => {
+    event.preventDefault()
+    const clienteData = {
+        nome_contrato: contratoValue.value,
+        email: emailValue.value,
+        ativo: ativoValue.value,
+        num_contrato: numContratoValue.value,
+        num_cliente: numClienteValue.value,
+        num_instalacao: numInstalacaoValue.value,
+        grupo: grupoValue.value,
+        forma_pagamento: pagValue.value,
+        planta: plantaValue.value
+    }
+    console.log(clienteData)
+    try {
+        axios.post(`${apiUrl}/energia/clientes_contratos/`, clienteData)
+        toast.success('Cliente criado com sucesso!', {
+            position: 'bottom-center'
+        });
+        clearForm()
+    } catch (error) {
+        toast.error('Erro criar cliente.', {
+          position: 'bottom-center'
+        });
+        console.log('Erro: ', error)
+    }
+}
+
+const clearForm = () => {
+    contratoValue.value = ''
+    emailValue.value = ''
+    ativoValue.value = ''
+    numContratoValue.value = ''
+    numClienteValue.value = ''
+    numInstalacaoValue.value = ''
+    grupoValue.value = ''
+    pagValue.value = ''
+    plantaValue.value = ''
+}
 
 const goBack = () => {
-    router.go(-1)
+    router.push('/clientes-energia')
 }
 
 </script>

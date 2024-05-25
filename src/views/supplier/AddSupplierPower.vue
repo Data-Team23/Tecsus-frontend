@@ -30,7 +30,7 @@
             <div class="input-button-container">
                 <InputButton 
                     :textButton="'Salvar'" 
-                    :onClick="console.log('Botão input acionado')">
+                    :onClick="criarFornecedor">
                 </InputButton>
             </div>
         </form>
@@ -43,26 +43,46 @@ import InputButton from '@/components/InputButton/InputButton.vue';
 import { useRouter } from 'vue-router';
 import { ref } from 'vue';
 import '@/assets/styles/list-create.css';
+import { useToast } from 'vue-toastification';
+import axios from 'axios';
 
+const apiUrl = 'http://localhost:8000/api'
+
+
+const toast = useToast();
 const router = useRouter();
 const fornecedorValue = ref();
 const contratoValue = ref();
 
-// const criarFornecedor = async () => {
-//     const fornecedorData = {
-//         fornecedor: fornecedorValue.value,
-//         num_contrato: contratoValue.value,
-//     }
-//     try {
-//         const response = axios.post(`${apiUrl}/energia/fornecedor_energia`, fornecedorData)
-//         console.log('Resposta da API:', response.data);
-//     } catch (error) {
-//         console.log('Erro: ', error)
-//     }
-// }
+const criarFornecedor = async () => {
+    event.preventDefault()
+    const fornecedorData = {
+        fornecedor: fornecedorValue.value,
+        num_contrato: parseInt(contratoValue.value),
+    }
+
+    console.log(fornecedorData)
+    try {
+        axios.post(`${apiUrl}/energia/fornecedores_energia/`, fornecedorData)
+        toast.success('Fornecedor criado com sucesso!', {
+            position: 'bottom-center'
+        });
+        clearForm()
+    } catch (error) {
+        toast.error('Erro criar fornecedor.', {
+          position: 'bottom-center'
+        });
+        console.log('Erro: ', error)
+    }
+}
+
+const clearForm = () => {
+    fornecedorValue.value = ''
+    contratoValue.value = ''
+}
 
 const goBack = () => {
-    router.go(-1)
+    router.push('/fornecedores-energia')
 }
 
 </script>

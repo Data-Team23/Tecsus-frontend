@@ -30,7 +30,7 @@
             <div class="input-button-container">
                 <InputButton 
                     :textButton="'Salvar'" 
-                    :onClick="console.log('Botão input acionado')">
+                    :onClick="updateFornecedor">
                 </InputButton>
             </div>
         </form>
@@ -50,25 +50,48 @@ const route = useRoute();
 const router = useRouter();
 
 const fornecedorId = route.params.id
-const fornecedor = ref()
-const num_contrato = ref()
+const fornecedorValue = ref()
+const contratoValue = ref()
 
 const apiUrl = 'http://localhost:8000/api'
 
 
-// axios.get(`${apiUrl}/energia/fornecedores_energia/${fornecedorId}`)
-//   .then(response => {
-//     fornecedor.value = response.fornecedor
-//     num_contrato.value = response.num_contrato
-//   })
-//   .catch(error => {
-//     console.error('Erro ao carregar alertas:', error);
-//   });
+axios.get(`${apiUrl}/energia/fornecedores_energia/${fornecedorId}`)
+  .then(response => {
+    try {
+        fornecedorValue.value = response.data.fornecedor
+        contratoValue.value = response.data.num_contrato
+        console.log(response)
+    } catch (error) {
+        toast.error('Erro ao carregar dados do fornecedor', {
+            position: 'bottom-center'
+        })
+    }
+  })
+
+const updateFornecedor = async () => {
+    event.preventDefault()
+    const fornecedorData = {
+        fornecedor: fornecedorValue.value,
+        num_contrato: contratoValue.value
+    }
+    console.log(fornecedorData)
+    try {
+        await axios.put(`${apiUrl}/energia/fornecedores_energia/${fornecedorId}`, fornecedorData);
+        toast.success('Fornecedor atualizado com sucesso!', {
+            position: 'bottom-center'
+        });
+    } catch (error) {
+        toast.error('Erro ao atualizar fornecedor', {
+            position: 'bottom-center'
+        });
+    }
+}
 
 console.log("id do fornecedor: ", fornecedorId)
 
 const goBack = () => {
-    router.go(-1)
+    router.push('/fornecedores-energia')
 }
 
 </script>
