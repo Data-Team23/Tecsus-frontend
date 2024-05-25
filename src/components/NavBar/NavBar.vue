@@ -19,10 +19,6 @@
                     <i class="fa-solid fa-file-contract" style="color: #ffffff;"></i>
                     Importar Dados
                 </router-link>
-                <!-- <router-link to="/unidades">
-                    <i class="fa-solid fa-box" style="color: #ffffff;"></i>
-                    Unidades
-                </router-link> -->
                 <router-link to="/fornecedores-agua">
                     <i class="fa-solid fa-building" style="color: #ffffff;"></i>
                     Fornecedores
