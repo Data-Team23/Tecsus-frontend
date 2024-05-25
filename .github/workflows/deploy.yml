@@ -28,4 +28,3 @@ jobs:
             - name: Push image docker
               run: docker push tecsus-frontend/dist
               
-   
