@@ -13,38 +13,22 @@
             </div>
         </div>
         <form action="" class="add-concessionaire-form">
-            <InputField
-                label="NOME DO FORNECEDOR"
-                placeholder="Informe o nome do fornecedor"
-                v-model="fornecedorValue"
+            <InputField label="NOME DO FORNECEDOR" placeholder="Informe o nome do fornecedor" v-model="fornecedorValue"
                 type="text">
             </InputField>
             <br>
-            <InputField
-                label="COMPANHIA"
-                placeholder="Informe o código da companhia"
-                v-model="codCompanhiaValue"
+            <InputField label="COMPANHIA" placeholder="Informe o código da companhia" v-model="codCompanhiaValue"
                 type="text">
             </InputField>
             <br>
-            <InputField
-                label="PLANTA"
-                placeholder="Informe a planta"
-                v-model="plantaValue"
-                type="text">
+            <InputField label="PLANTA" placeholder="Informe a planta" v-model="plantaValue" type="text">
             </InputField>
             <br>
-            <InputField
-                label="RGI"
-                placeholder="Informe o código RGI"
-                v-model="rgiValue"
-                type="text">
+            <InputField label="RGI" placeholder="Informe o código RGI" v-model="rgiValue" type="text">
             </InputField>
             <br>
             <div class="input-button-container">
-                <InputButton 
-                    :textButton="'Salvar'" 
-                    :onClick="console.log('Botão input acionado')">
+                <InputButton :textButton="'Salvar'" :onClick="updateFornecedor">
                 </InputButton>
             </div>
         </form>
@@ -72,21 +56,47 @@ const rgiValue = ref();
 const apiUrl = 'http://localhost:8000/api'
 
 
-// axios.get(`${apiUrl}/agua/fornecedores_agua/${fornecedorId}`)
-//   .then(response => {
-//     fornecedorValue.value = response.fornecedor
-//     codCompanhiaValue.value = response.cod_companhia
-//     plantaValue = response.planta
-//     rgiValue.value = response.codigo_de_ligacao_rgi
-//   })
-//   .catch(error => {
-//     console.error('Erro ao carregar alertas:', error);
-//   });
+axios.get(`${apiUrl}/agua/fornecedores_agua/${fornecedorId}`)
+    .then(response => {
+        try {
+            fornecedorValue.value = response.data.fornecedor
+            codCompanhiaValue.value = response.data.cod_companhia
+            plantaValue.value = response.data.planta
+            rgiValue.value = response.data.codigo_de_ligacao_rgi
+        } catch (error) {
+            toast.error('Erro ao carregar dados do fornecedor', {
+                position: 'bottom-center'
+            })
+        }
+    })
+    .catch(error => {
+        console.error('Erro ao carregar alertas:', error);
+    });
+
+const updateFornecedor = async () => {
+    event.preventDefault()
+    const fornecedorData = {
+        fornecedor: fornecedorValue.value,
+        cod_companhia: codCompanhiaValue.value,
+        planta: plantaValue.value,
+        codigo_de_ligacao_rgi: rgiValue.value
+    }
+    try {
+        await axios.put(`${apiUrl}/agua/fornecedores_agua/${fornecedorId}`, fornecedorData);
+        toast.success('Fornecedor atualizado com sucesso!', {
+            position: 'bottom-center'
+        });
+    } catch (error) {
+        toast.error('Erro ao atualizar fornecedor', {
+            position: 'bottom-center'
+        });
+    }
+}
 
 console.log("id do fornecedor: ", fornecedorId)
 
 const goBack = () => {
-    router.go(-1)
+    router.push('/fornecedores-agua')
 }
 
 </script>

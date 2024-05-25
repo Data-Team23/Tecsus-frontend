@@ -44,7 +44,7 @@
             <div class="input-button-container">
                 <InputButton 
                     :textButton="'Salvar'" 
-                    :onClick="console.log('Botão input acionado')">
+                    :onClick="criarFornecedor">
                 </InputButton>
             </div>
         </form>
@@ -56,35 +56,53 @@ import InputField from '@/components/InputField/InputField.vue';
 import InputButton from '@/components/InputButton/InputButton.vue';
 import { useRouter } from 'vue-router';
 import { ref } from 'vue';
+import { useToast } from 'vue-toastification';
 import axios from 'axios';
 import '@/assets/styles/list-create.css';
 
 const apiUrl = 'http://localhost:8000/api'
 
 const router = useRouter();
-const fornecedorValue = ref();
-const codCompanhiaValue = ref();
-const plantaValue = ref();
-const rgiValue = ref();
+const toast = useToast();
 
-// const criarFornecedor = async () => {
-//     const fornecedorData = {
-//         fornecedor: fornecedorValue.value,
-//         cod_companhia: codCompanhiaValue.value,
-//         planta: plantaValue.value,
-//         codigo_de_ligacao_rgi: rgiValue.value,
-//     }
-//     try {
-//         const response = axios.post(`${apiUrl}/agua/fornecedor_agua`, fornecedorData)
-//         console.log('Resposta da API:', response.data);
-//     } catch (error) {
-//         console.log('Erro: ', error)
-//     }
-// }
+const fornecedorValue = ref("");
+const codCompanhiaValue = ref("");
+const plantaValue = ref("");
+const rgiValue = ref("");
+
+const criarFornecedor = async () => {
+    event.preventDefault()
+    const fornecedorData = {
+        fornecedor: fornecedorValue.value,
+        cod_companhia: codCompanhiaValue.value,
+        planta: plantaValue.value,
+        codigo_de_ligacao_rgi: rgiValue.value,
+    }
+
+    try {
+        axios.post(`${apiUrl}/agua/fornecedores_agua/`, fornecedorData)
+        toast.success('Fornecedor criado com sucesso!', {
+            position: 'bottom-center'
+        });
+        clearForm()
+    } catch (error) {
+        toast.error('Erro criar fornecedor.', {
+          position: 'bottom-center'
+        });
+        console.log('Erro: ', error)
+    }
+}
+
+const clearForm = () => {
+    fornecedorValue.value = ''
+    codCompanhiaValue.value = ''
+    plantaValue.value = ''
+    rgiValue.value = ''
+}
 
 
 const goBack = () => {
-    router.go(-1)
+    router.push('/fornecedores-agua')
 }
 
 </script>
