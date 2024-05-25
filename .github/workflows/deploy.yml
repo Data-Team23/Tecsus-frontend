@@ -24,8 +24,8 @@ jobs:
             - name: Login Docker Hub            
               run: docker login -u ${{secrets.DEPLOY_DOCKER_USUARIO}} -p ${{secrets.DEPLOY_DOCKER}}
             - name: Build docker image
-              run: docker build -t Tecsus-frontend/dist .
+              run: docker build -t tecsus-frontend/dist .
             - name: Push image docker
-              run: docker push Tecsus-frontend/dist
+              run: docker push tecsus-frontend/dist
               
    
