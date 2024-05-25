@@ -1,0 +1,29 @@
+
+name: Deploy Tecsus
+
+on:
+    push:
+        branches: [xp-40-Deploy]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v3
+      
+            - name: Setup Node.js
+              uses: actions/setup-node@v3
+              with:
+                node-version: 18
+
+            - name: Run Build project
+              run: npm run build  
+            - name: Login Docker Hub            
+              run: docker login -u ${{secrets.DEPLOY_DOCKER_USUARIO}} -p ${{secrets.DEPLOY_DOCKER}}
+            - name: Build docker image
+              run: docker build -t Tecsus-frontend/dist .
+            - name: Push image docker
+              run: docker push Tecsus-frontend/dist
+              
+   
