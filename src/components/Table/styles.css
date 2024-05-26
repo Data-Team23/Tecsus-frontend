@@ -1,0 +1,42 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table caption{
+    display: none;
+}
+
+th, td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: left;
+    max-width: auto;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.pagination-buttons {
+    margin-top: 20px;
+}
+
+.pagination-buttons button {
+    margin-right: 10px;
+}
+
+.table-container {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.edit-icon{
+    cursor: pointer;
+}
+
+.edit-icon:hover{
+    color: var(--cor-hover)
+}
