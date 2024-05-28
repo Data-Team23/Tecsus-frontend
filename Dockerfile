@@ -5,8 +5,8 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm install --ignore-scripts
-RUN npm install -g @vue/cli-service --ignore-scripts
+RUN npm install --ignore-scripts --unsafe-perm=true
+RUN npm install -g @vue/cli-service --ignore-scripts --unsafe-perm=true
 
 COPY public ./public
 COPY src ./src
