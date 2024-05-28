@@ -1,4 +1,4 @@
-name: Integration Test Pipeline
+name: Integration Tests Pipeline
 
 on:
 
@@ -12,7 +12,7 @@ on:
 
 jobs:
   integration-test: 
-    name: Integration Test
+    name: Integration Tests
     runs-on: ubuntu-latest
 
     steps:
@@ -27,8 +27,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Start frontend server
-        run: npm run serve
+      - name: Start frontend server with docker
+        run: docker-compose up -d --build
       
       - name: Wait for frontend to be ready
         run: npx wait-on http://localhost:8080
