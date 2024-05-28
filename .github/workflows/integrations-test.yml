@@ -1,0 +1,37 @@
+name: Integration Test Pipeline
+
+on:
+
+  push:
+    branches:
+      - "*"
+
+  pull_request:
+    branches:
+      - "dev"
+
+jobs:
+  integration-test: 
+    name: Integration Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Start frontend server
+        run: npm run serve
+      
+      - name: Wait for frontend to be ready
+        run: npx wait-on http://localhost:8080
+
+      - name: Run integration tests
+        run: npx cypress run

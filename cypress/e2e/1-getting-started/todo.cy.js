@@ -22,22 +22,28 @@ describe('Teste de cadastro com Cypress', () => {
     // Seleciona o segundo campo ComboBox
     cy.get('#documento').select('Contrato');
 
-    // cy.get('#csv').input('teste_lucas.csv')
+    // Intercepta a chamada da api para cadastrar os dados
+    cy.intercept('POST', '/api/energia/upload', {
+      statusCode: 201,
+      body: { message: 'Dados cadastrados com sucesso!' },
+    }).as('cadastroMock');
 
-     // Upload a valid CSV file
-     cy.get('#csv')
-     .attachFile('teste_lucas.csv'); // Replace with the path to your valid CSV file
+    // Faz o Upload de um CSV válido
+    cy.get('#csv').attachFile('teste_lucas.csv');
 
-    // Wait for the file to be processed (adjust timeout if needed)
+    // Espera o arquivo ser processado
     cy.wait(5000);
 
-    // Verify table data
-    cy.get('.container-table-message').should('not.exist'); // Table message shouldn't be visible 
+    // Verifica os dados da tabela
+    cy.get('.container-table-message').should('not.exist');
    
+    // Clica no botão de salvar
     cy.get('#botao').click();
 
-    const fileContent = cy.get('#csv')
-    .attachFile('teste_lucas.csv');
+    cy.wait('@cadastroMock').then(() => {
+      // Verifica se a mensagem de sucesso apareceu
+      cy.contains('Arquivo CSV enviado com sucesso!').should('be.visible');
+    });
 
   });
 });
