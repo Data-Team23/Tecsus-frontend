@@ -27,6 +27,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Set up Docker Compose
+        run: |
+          sudo apt-get install docker-compose -y
+          sudo chmod +x /usr/local/bin/docker-compose
+
       - name: Start frontend server with docker
         run: docker-compose up -d --build
       
