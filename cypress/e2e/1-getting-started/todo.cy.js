@@ -11,7 +11,7 @@
 // please read our getting started guide:
 // https://on.cypress.io/introduction-to-cypress
 
-describe('Teste de cadastro com Cypress', () => {
+describe('Teste de upload de arquivo CSV.', () => {
   it('Deve selecionar campos, importar CSV e cadastrar no banco de dados', () => {
     // Visita a página onde está o formulário
     cy.visit('http://localhost:8080/upload');
@@ -22,23 +22,62 @@ describe('Teste de cadastro com Cypress', () => {
     // Seleciona o segundo campo ComboBox
     cy.get('#documento').select('Contrato');
 
-    // cy.get('#csv').input('teste_lucas.csv')
+    // Intercepta a chamada da api para cadastrar os dados
+    cy.intercept('POST', '/api/energia/upload', {
+      statusCode: 201,
+      body: { message: 'Dados cadastrados com sucesso!' },
+    }).as('cadastroMock');
 
-     // Upload a valid CSV file
-     cy.get('#csv')
-     .attachFile('teste_lucas.csv'); // Replace with the path to your valid CSV file
+    // Faz o Upload de um CSV válido
+    cy.get('#csv').attachFile('teste_lucas.csv');
 
-    // Wait for the file to be processed (adjust timeout if needed)
+    // Espera o arquivo ser processado
     cy.wait(5000);
 
-    // Verify table data
-    cy.get('.container-table-message').should('not.exist'); // Table message shouldn't be visible 
-   
+    // Verifica os dados da tabela
+    cy.get('.container-table-message').should('not.exist');
+
+    // Clica no botão de salvar
     cy.get('#botao').click();
 
-    const fileContent = cy.get('#csv')
-    .attachFile('teste_lucas.csv');
+    // Verifica se a mensagem de sucesso apareceu
+    cy.wait('@cadastroMock').then(() => {
+      cy.contains('Arquivo CSV enviado com sucesso!').should('be.visible');
+    });
 
+  });
+});
+
+
+describe('Teste de cadastro de fornecedor de energia.', () => {
+  it('Deve preencher o formulário e criar um fornecedor com sucesso', () => {
+    // Visita a página onde está o formulário
+    cy.visit('http://localhost:8080/adicionar-fornecedor-energia');
+
+    // Intercepta a chamada de API para criar um fornecedor
+    cy.intercept('POST', '/api/energia/fornecedores_energia/', {
+      statusCode: 201,
+      body: { message: 'Fornecedor criado com sucesso!' },
+    }).as('criarFornecedor');
+
+    // Preenche o campo "NOME DO FORNECEDOR"
+    cy.get('input[placeholder="Informe o nome do fornecedor"]').type('Fornecedor Teste');
+
+    // Preenche o campo "CONTRATO"
+    cy.get('input[placeholder="Informe o número do contrato"]').type('12345');
+
+    // Clica no botão "Salvar"
+    cy.get('button').contains('Salvar').click();
+
+    // Espera a chamada de API ser interceptada
+    cy.wait('@criarFornecedor');
+
+    // Verifica se a mensagem de sucesso apareceu
+    cy.contains('Fornecedor criado com sucesso!').should('be.visible');
+
+    // Verifica se os campos do formulário foram limpos
+    cy.get('input[placeholder="Informe o nome do fornecedor"]').should('have.value', '');
+    cy.get('input[placeholder="Informe o número do contrato"]').should('have.value', '');
   });
 });
 
