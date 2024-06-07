@@ -61,7 +61,6 @@ const criarFornecedor = async () => {
         num_contrato: parseInt(contratoValue.value),
     }
 
-    console.log(fornecedorData)
     try {
         axios.post(`${apiUrl}/energia/fornecedores_energia/`, fornecedorData)
         toast.success('Fornecedor criado com sucesso!', {
