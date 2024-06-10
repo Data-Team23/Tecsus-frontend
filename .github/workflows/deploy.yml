@@ -40,7 +40,7 @@ jobs:
               runs-on: self-hosted
               steps:
                       - name: Pull image from docker hub
-                        run: docker pull Tecsus-frontend/dist:latest
+                        run: sudo docker pull tecsus-frontend/dist:latest
                       - name: Run docker container
-                        run: docker run -d -p 8080:8080 --name Tecsus-frontend tecsus-frontend/dist
+                        run: sudo docker run -d -p 8080:8080 --name tecsus-frontend tecsus-frontend/dist
           
