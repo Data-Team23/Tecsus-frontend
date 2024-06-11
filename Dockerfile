@@ -17,6 +17,6 @@ RUN chown -R node:node /app
 # Mudar para o usuário node
 USER node
 
-EXPOSE 8080
+EXPOSE 80
 
 CMD ["npm", "run", "serve"]
