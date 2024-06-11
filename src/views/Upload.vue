@@ -26,7 +26,7 @@
         </div>
         <div class="container-table">
             <div class="container-table-message" v-if="!fileInputValue">
-                <p>Para visualizar os dados, selecione um arquivo para importar!</p>
+                <p>Para visualizar os dados!</p>
             </div>
             <TableComponent
                 :data="data" 
