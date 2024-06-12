@@ -2,7 +2,8 @@
 FROM datateam23/tecsus-backend:latest
 
 # Adicionar um novo usuário não privilegiado
-RUN addgroup nonroot && adduser -D -G nonroot nonroot
+RUN addgroup nonroot
+RUN adduser nonroot nonroot
 USER nonroot
 
 # Defina o diretório de trabalho dentro do contêiner
