@@ -50,7 +50,7 @@ jobs:
         run: docker pull datateam23/tecsus-backend:latest
 
       - name: Build Docker image for backend
-        run: docker build -t tecsus-backend -f dockerfile.backend .
+        run: docker build -t tecsus-backend -f Dockerfile.backend .
 
       - name: Run Django makemigrations
         run: docker run --rm --name django-makemigrations --link postgres-db:db -e DATABASE_URL=postgres://tecsus:tecsus@db:5432/tecsus tecsus-backend python manage.py makemigrations
