@@ -1,0 +1,8 @@
+# Use a imagem do backend do Docker Hub como base
+FROM datateam23/tecsus-backend:latest
+
+WORKDIR /app
+
+EXPOSE 8000
+
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
