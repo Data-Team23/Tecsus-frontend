@@ -15,21 +15,6 @@ jobs:
     name: Integration Tests
     runs-on: ubuntu-latest
 
-    services:
-      postgres-db:
-        image: postgres:latest
-        env:
-          POSTGRES_DB: tecsus
-          POSTGRES_USER: tecsus
-          POSTGRES_PASSWORD: tecsus
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd "pg_isready -U tecsus" 
-          --health-interval 10s 
-          --health-timeout 5s 
-          --health-retries 5
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -47,6 +32,17 @@ jobs:
 
       - name: Build Docker image for backend
         run: sudo docker build -t tecsus-backend .
+
+      - name: Pull PostgreSQL image
+        run: sudo docker pull postgres:latest
+
+      - name: Start PostgreSQL container
+        run: |
+          sudo docker run -d --name postgres-db \
+            -e POSTGRES_DB=tecsus \
+            -e POSTGRES_USER=tecsus \
+            -e POSTGRES_PASSWORD=tecsus \
+            postgres:latest
       
       # Aguardar até que o serviço do PostgreSQL esteja pronto
       - name: Wait for PostgreSQL to be ready
