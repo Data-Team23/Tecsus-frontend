@@ -6,11 +6,8 @@ RUN addgroup nonroot
 RUN adduser nonroot nonroot
 USER nonroot
 
-# Defina o diretório de trabalho dentro do contêiner
 WORKDIR /app
 
-# Exponha a porta em que o Django vai rodar (por padrão 8000)
 EXPOSE 8000
 
-# Comando para rodar o servidor Django
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
