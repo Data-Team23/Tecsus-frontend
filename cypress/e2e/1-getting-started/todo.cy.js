@@ -22,29 +22,20 @@ describe('Teste de upload de arquivo CSV.', () => {
     // Seleciona o segundo campo ComboBox
     cy.get('#documento').select('Contrato');
 
-    // Intercepta a chamada da api para cadastrar os dados
-    cy.intercept('POST', '/api/energia/upload', {
-      statusCode: 201,
-      body: { message: 'Dados cadastrados com sucesso!' },
-    }).as('cadastroMock');
-
     // Faz o Upload de um CSV válido
     cy.get('#csv').attachFile('teste_lucas.csv');
 
     // Espera o arquivo ser processado
-    cy.wait(5000);
+    cy.wait(5000); // Tempo para backend processar a requisição e salvar no banco
 
     // Verifica os dados da tabela
-    cy.get('.container-table-message').should('not.exist');
+    cy.get('.container-table-message').should('not.exist'); // Mensagem não deve estar visível
 
     // Clica no botão de salvar
     cy.get('#botao').click();
 
     // Verifica se a mensagem de sucesso apareceu
-    cy.wait('@cadastroMock').then(() => {
-      cy.contains('Arquivo CSV enviado com sucesso!').should('be.visible');
-    });
-
+    cy.contains('Arquivo CSV enviado com sucesso!').should('be.visible');
   });
 });
 

@@ -5,10 +5,30 @@ on:
     branches:
       - "dev"
 
+  push:
+    branches-ignore:
+      - dev
+      - main
+
 jobs:
   integration-test: 
     name: Integration Tests
     runs-on: ubuntu-latest
+
+    services:
+      postgres-db:
+        image: postgres:latest
+        env:
+          POSTGRES_DB: tecsus
+          POSTGRES_USER: tecsus
+          POSTGRES_PASSWORD: tecsus
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U tecsus" 
+          --health-interval 10s 
+          --health-timeout 5s 
+          --health-retries 5
 
     steps:
       - name: Checkout repository
@@ -22,10 +42,36 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Pull Docker image for backend
+        run: sudo docker pull datateam23/tecsus-backend:latest
+
+      - name: Build Docker image for backend
+        run: sudo docker build -t tecsus-backend .
+
+      - name: Run Django makemigrations
+        run: sudo docker run --rm --name django-makemigrations --link postgres-db:db -e DATABASE_URL=postgres://tecsus:tecsus@db:5432/tecsus tecsus-backend python manage.py makemigrations
+
+      - name: Run Django migrations
+        run: sudo docker run --rm --name django-migrate --link postgres-db:db -e DATABASE_URL=postgres://tecsus:tecsus@db:5432/tecsus tecsus-backend python manage.py migrate
+
+      - name: Create Django superuser
+        run: sudo docker run --rm --name django-superuser --link postgres-db:db -e DATABASE_URL=postgres://tecsus:tecsus@db:5432/tecsus tecsus-backend python manage.py createsuperuser
+
+      - name: Start Django backend application
+        run: sudo docker run -d --name tecsus-backend -p 8000:8000 --link postgres-db:db tecsus-backend
+
+      # Esperar o servidor Django ficar pronto
+      - name: Wait for Django backend to be ready
+        run: |
+          sleep 10
+          until curl -s http://localhost:8000/; do echo "Waiting for Django..."; sleep 5; done
+
+      # Build e serve do frontend Vue.js
       - name: Run Integration Tests with Cypress
         uses: cypress-io/github-action@v6
         with:
           build: npm run build
           start: npm run serve
+          wait-on: 'http://localhost:8080'
 
         
