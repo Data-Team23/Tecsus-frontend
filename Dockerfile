@@ -16,8 +16,15 @@ RUN npm run build
 # Etapa de produção (production-stage)
 FROM nginx:alpine
 
+# Adicionar um usuário não privilegiado
+RUN addgroup -S nonroot \
+    && adduser -S nonroot -G nonroot
+
 # Copiar os arquivos construídos para a pasta padrão do Nginx
 COPY --from=build-stage /app/dist /usr/share/nginx/html
+
+# Alterar o usuário padrão para o usuário não privilegiado
+USER nonroot
 
 # Expor a porta 80
 EXPOSE 80
