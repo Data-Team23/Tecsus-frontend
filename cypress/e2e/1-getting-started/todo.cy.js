@@ -26,7 +26,7 @@ describe('Teste de upload de arquivo CSV.', () => {
     cy.get('#csv').attachFile('teste_lucas.csv');
 
     // Espera o arquivo ser processado
-    cy.wait(5000); // Tempo para backend processar a requisição e salvar no banco
+    cy.wait(10000); // Tempo para backend processar a requisição e salvar no banco
 
     // Verifica os dados da tabela
     cy.get('.container-table-message').should('not.exist'); // Mensagem não deve estar visível
