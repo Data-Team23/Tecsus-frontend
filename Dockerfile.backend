@@ -1,9 +1,7 @@
 # Use a imagem do backend do Docker Hub como base
 FROM datateam23/tecsus-backend:latest
 
-# Adicionar um novo usuário não privilegiado
-RUN addgroup nonroot
-RUN adduser nonroot nonroot
+# Utiliza o usuário não privilegiado
 USER nonroot
 
 WORKDIR /app
