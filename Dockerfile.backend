@@ -1,0 +1,11 @@
+# Use a imagem do backend do Docker Hub como base
+FROM datateam23/tecsus-backend:latest
+
+# Defina o diretório de trabalho dentro do contêiner
+WORKDIR /app
+
+# Exponha a porta em que o Django vai rodar (por padrão 8000)
+EXPOSE 8000
+
+# Comando para rodar o servidor Django
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
