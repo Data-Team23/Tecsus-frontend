@@ -1,9 +1,6 @@
 # Use a imagem do backend do Docker Hub como base
 FROM datateam23/tecsus-backend:latest
 
-# Utiliza o usuário não privilegiado
-USER nonroot
-
 WORKDIR /app
 
 EXPOSE 8000
