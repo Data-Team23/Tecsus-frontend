@@ -47,6 +47,12 @@ jobs:
 
       - name: Build Docker image for backend
         run: sudo docker build -t tecsus-backend .
+      
+      # Aguardar até que o serviço do PostgreSQL esteja pronto
+      - name: Wait for PostgreSQL to be ready
+        run: |
+          sleep 10
+          until sudo docker exec postgres-db pg_isready -U tecsus; do echo "Waiting for PostgreSQL..."; sleep 5; done
 
       - name: Run Django makemigrations
         run: sudo docker run --rm --name django-makemigrations --link postgres-db:db -e DATABASE_URL=postgres://tecsus:tecsus@db:5432/tecsus tecsus-backend python manage.py makemigrations
