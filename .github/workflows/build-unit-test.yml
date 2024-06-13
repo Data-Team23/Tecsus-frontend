@@ -1,4 +1,4 @@
-name: Build and Unit Tests Pipelina
+name: Build and Unit Tests Pipeline
 
 on:
   push:
