@@ -3,7 +3,7 @@ name: Integration Tests Pipeline
 on:
   pull_request:
     branches:
-      - "XP-39-testeintegracao"
+      - "dev"
 
 jobs:
   integration-test: 
