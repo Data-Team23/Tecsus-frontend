@@ -1,18 +1,13 @@
-name: Build and Unit Tests Pipelina
+name: Integration Tests Pipeline
 
 on:
-  push:
-    branches-ignore:
-      - dev
-      - main
-      
   pull_request:
     branches:
       - "dev"
 
 jobs:
-  build-unit-test: 
-    name: Build and Unit Tests
+  integration-test: 
+    name: Integration Tests
     runs-on: ubuntu-latest
 
     steps:
@@ -26,14 +21,11 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-      
-      - name: Run Build project
-        run: npm run build
-      
-      - name: Run tests
-        run: npm run test
 
+      - name: Run Integration Tests with Cypress
+        uses: cypress-io/github-action@v6
+        with:
+          build: npm run build
+          start: npm run serve
 
-
-      
-
+        
