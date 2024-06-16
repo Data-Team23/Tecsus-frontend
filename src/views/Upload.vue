@@ -5,6 +5,7 @@
                 :option-values="countTypes"
                 value-prop="value"
                 label-prop="label"
+                id="conta"
                 v-model="countTypeValue"
                 pre-selected-prop="Selecione o tipo de conta:">
             </SelectField>
@@ -12,6 +13,7 @@
                 :option-values="documentTypes"
                 value-prop="id"
                 label-prop="name"
+                id="documento"
                 v-model="documentTypeValue"
                 pre-selected-prop="Selecione o tipo de documento:">
             </SelectField>      
@@ -20,6 +22,7 @@
             <InputField
                 placeholder="Path"
                 type="file"
+                id="csv"
                 v-on:change="onFileInputChange"
                 @change="handleFileChange">
             </InputField>
@@ -39,7 +42,8 @@
                 :onClick="clearData">
             </InputButton>
             <InputButton 
-                :textButton="'Salvar'" 
+                :textButton="'Salvar'"
+                id="botao" 
                 :onClick="uploadCSV">
             </InputButton>
         </div>

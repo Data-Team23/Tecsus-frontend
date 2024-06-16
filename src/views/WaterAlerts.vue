@@ -30,7 +30,7 @@ const data = ref([])
 
 let tableObject = {};
 
-axios.get(`${apiUrl}/agua/alertas_agua`)
+axios.get(`${apiUrl}/alerta/alertas_agua/`)
   .then(response => {
     console.log(response.data);
     data.value = response.data

@@ -30,10 +30,10 @@
         </div>
         <div class="table-container">
             <TableComponent
-                :id-prop-name="'id'"
+                :id-prop-name="'codigo_de_ligacao_rgi'"
                 :show-edit-column="true"
                 :column-names="['Contrato', 'Email', 'Ativo?', 'Nº Contrato', 'Nº Cliente']"
-                :display-columns="['name', 'email', 'ativo', 'numero_contrato', 'numero_cliente']"
+                :display-columns="['nome_contrato', 'email', 'ativo', 'numero_contrato', 'numero_cliente']"
                 :data="data">
             </TableComponent>
         </div>
@@ -52,41 +52,16 @@ const toast = useToast();
 
 const apiUrl = 'http://localhost:8000/api'
 
-const data = ref([
-    {
-        "name": "CLIENTE 1",
-        "email": "cliente@gmail.com",
-        "ativo": "Sim",
-        "numero_contrato": "123809",
-        "numero_cliente": "1203980",
-        "id": "1"
-    },
-    {
-        "name": "CLIENTE 2",
-        "email": "cliente@gmail.com",
-        "ativo": "Sim",
-        "numero_contrato": "123809",
-        "numero_cliente": "1203980",
-        "id": "2"
-    },
-    {
-        "name": "CLIENTE 3",
-        "email": "cliente@gmail.com",
-        "ativo": "Sim",
-        "numero_contrato": "123809",
-        "numero_cliente": "1203980",
-        "id": "3"
-    },
-])
+const data = ref([])
 
 
-// axios.get(`${apiUrl}/agua/clientes_contratos`)
-//   .then(response => {
-//     console.log(response.data);
-//     data.value = response.data
-//   })
-//   .catch(error => {
-//     console.error('Erro ao carregar alertas:', error);
-//   });
+axios.get(`${apiUrl}/agua/clientes_contratos`)
+  .then(response => {
+    console.log(response.data);
+    data.value = response.data
+  })
+  .catch(error => {
+    console.error('Erro ao carregar clientes:', error);
+  });
 
 </script>

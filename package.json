@@ -30,6 +30,8 @@
     "@vue/test-utils": "^2.4.5",
     "@vue/vue3-jest": "^27.0.0-alpha.1",
     "babel-jest": "^27.0.6",
+    "cypress": "^13.10.0",
+    "cypress-file-upload": "^5.0.8",
     "cz-conventional-changelog": "^3.3.0",
     "husky": "^8.0.0",
     "jest": "^27.5.1"

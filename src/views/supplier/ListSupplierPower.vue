@@ -23,18 +23,18 @@
                 <h4>Tabela de fornecedores cadastradas</h4>
             </div>
             <div class="add-button">
-                <router-link to="/adicionar-fornecedor-agua">
+                <router-link to="/adicionar-fornecedor-energia">
                     <i class="fa-solid fa-plus"></i>
                 </router-link>
             </div>
         </div>
         <div class="table-container">
             <TableComponent
-                :id-prop-name="'id'"
+                :id-prop-name="'id_fornecedor_energia'"
                 :show-edit-column="true"
                 :data="data"
-                :display-columns="['name', 'cep', 'endereco', 'planta']"
-                :column-names="['Fornecedor', 'Cód. Companhia', 'Endereço', 'Planta']">
+                :display-columns="['id_fornecedor_energia', 'fornecedor']"
+                :column-names="['ID', 'Nome']">
             </TableComponent>
         </div>
     </div>
@@ -51,37 +51,15 @@ const toast = useToast();
 
 const apiUrl = 'http://localhost:8000/api'
 
-const data = ref([
-    {
-        "name": "Fornecedor 1",
-        "cep": "12224-015",
-        "endereco": "Rua, XXXXXXXXXXX, 230",
-        "planta": "CO",
-        "id": "1"
-    },
-    {
-        "name": "Fornecedor 2",
-        "cep": "12224-016",
-        "endereco": "Rua, XXXXXXXXXXX, 231",
-        "planta": "CO",
-        "id": "2"
-    },
-    {
-        "name": "Fornecedor 3",
-        "cep": "12224-017",
-        "endereco": "Rua, XXXXXXXXXXX, 232",
-        "planta": "CO",
-        "id": "3"
-    }
-])
+const data = ref([])
 
-// axios.get(`${apiUrl}/energia/fornecedores_energia`)
-//   .then(response => {
-//     console.log(response.data);
-//     data.value = response.data
-//   })
-//   .catch(error => {
-//     console.error('Erro ao carregar alertas:', error);
-//   });
+axios.get(`${apiUrl}/energia/fornecedores_energia`)
+  .then(response => {
+    console.log(response.data);
+    data.value = response.data
+  })
+  .catch(error => {
+    console.error('Erro ao carregar alertas:', error);
+  });
 
 </script>

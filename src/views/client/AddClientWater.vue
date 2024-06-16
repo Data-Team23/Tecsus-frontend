@@ -59,7 +59,7 @@
             <div class="input-button-container">
                 <InputButton 
                     :textButton="'Salvar'" 
-                    :onClick="console.log('Botão input acionado')">
+                    :onClick="criarCliente">
                 </InputButton>
             </div>
         </form>
@@ -67,11 +67,17 @@
 </template>
 
 <script setup>
+import axios from 'axios';
 import InputField from '@/components/InputField/InputField.vue';
 import InputButton from '@/components/InputButton/InputButton.vue';
 import { useRouter } from 'vue-router';
 import { ref } from 'vue'
 import '@/assets/styles/list-create.css';
+import { useToast } from 'vue-toastification';
+
+const apiUrl = 'http://localhost:8000/api'
+
+const toast = useToast()
 
 const router = useRouter();
 const contratoValue = ref()
@@ -81,25 +87,42 @@ const emailValue = ref()
 const ativoValue = ref()
 const rgiValue = ref()
 
-// const criarCliente = async () => {
-//     const clienteData = {
-//         nome_contrato: contratoValue.value,
-//         email: emailValue.value,
-//         ativo: ativoValue.value,
-//         numero_contrato: numContratoValue.value,
-//         numero_cliente: numClienteValue.value,
-//         codigo_de_ligacao_rgi: rgiValue.value
-//     }
-//     try {
-//         const response = axios.post(`${apiUrl}/energia/cliente_energia`, clienteData)
-//         console.log('Resposta da API:', response.data);
-//     } catch (error) {
-//         console.log('Erro: ', error)
-//     }
-// }
+const criarCliente = async () => {
+    event.preventDefault()
+    const clienteData = {
+        nome_contrato: contratoValue.value,
+        email: emailValue.value,
+        ativo: ativoValue.value,
+        numero_contrato: numContratoValue.value,
+        numero_cliente: numClienteValue.value,
+        codigo_de_ligacao_rgi: rgiValue.value
+    }
+    console.log(clienteData)
+    try {
+        await axios.post(`${apiUrl}/agua/clientes_contratos/`, clienteData)
+        toast.success('Cliente criado com sucesso!', {
+            position: 'bottom-center'
+        });
+        clearForm()
+    } catch (error) {
+        toast.error('Erro criar cliente.', {
+          position: 'bottom-center'
+        });
+        console.log('Erro: ', error)
+    }
+}
+
+const clearForm = () => {
+    contratoValue.value = ''
+    emailValue.value = ''
+    ativoValue.value = ''
+    numContratoValue.value = ''
+    numClienteValue.value = ''
+    rgiValue.value = ''
+}
 
 const goBack = () => {
-    router.go(-1)
+    router.push('/clientes-agua')
 }
 
 </script>

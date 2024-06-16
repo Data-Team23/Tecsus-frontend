@@ -20,7 +20,7 @@ export default {
             default: "text"
         },
         modelValue: {
-            type: [String, Object],
+            type: [String, Object, Number],
             default: ""
         },
         placeholder: {
@@ -28,5 +28,10 @@ export default {
             default: "Informe o placeholder"
         }
     },
+    methods: {
+        updateInput(event) {
+            this.$emit("update:modelValue", event.target.value)
+        }
+    }
 }
 </script>
