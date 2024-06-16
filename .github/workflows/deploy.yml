@@ -4,7 +4,7 @@ name: Deploy Tecsus
 on:
   pull_request:
     branches:
-      - xp-48-Deploy
+      - main
     types:
       - closed
 
