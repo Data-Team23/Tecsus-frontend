@@ -33,8 +33,8 @@
                 :id-prop-name="'id_fornecedor_energia'"
                 :show-edit-column="true"
                 :data="data"
-                :display-columns="['id_fornecedor_energia', 'fornecedor', 'num_contrato']"
-                :column-names="['ID', 'Nome', 'Nº Contrato']">
+                :display-columns="['id_fornecedor_energia', 'fornecedor']"
+                :column-names="['ID', 'Nome']">
             </TableComponent>
         </div>
     </div>

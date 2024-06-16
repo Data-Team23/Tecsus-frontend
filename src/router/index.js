@@ -15,6 +15,7 @@ import ListSupplierPower from '@/views/supplier/ListSupplierPower.vue';
 import EditSupplierPower from '@/views/supplier/EditSupplierPower.vue';
 import EditSupplierWater from '@/views/supplier/EditSupplierWater.vue';
 import EditClientPower from '@/views/client/EditClientPower.vue';
+import LoginView from '@/views/login/LoginView.vue';
 
 const routes = [
   {
@@ -101,7 +102,15 @@ const routes = [
     path: '/clientes-energia/:id',
     name: 'Editar cliente energia',
     component: EditSupplierPower
-  }
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: LoginView,
+    meta: {
+      hideNavBar: true,
+    }
+  },
 ];
 
 const router = createRouter({

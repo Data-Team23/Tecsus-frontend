@@ -79,6 +79,8 @@ const criarFornecedor = async () => {
         codigo_de_ligacao_rgi: rgiValue.value,
     }
 
+    console.log(fornecedorData)
+    
     try {
         axios.post(`${apiUrl}/agua/fornecedores_agua/`, fornecedorData)
         toast.success('Fornecedor criado com sucesso!', {

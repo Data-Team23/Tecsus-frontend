@@ -33,8 +33,8 @@
                 :id-prop-name="'id_fornecedor_agua'"
                 :show-edit-column="true"
                 :data="data"
-                :display-columns="['fornecedor', 'cod_companhia', 'planta', 'codigo_de_ligacao_rgi']"
-                :column-names="['Fornecedor', 'Cód. Companhia', 'Endereço', 'Planta']">
+                :display-columns="['id_fornecedor_agua', 'fornecedor']"
+                :column-names="['ID', 'Nome']">
             </TableComponent>
         </div>
     </div>

@@ -5,6 +5,7 @@
                 :option-values="countTypes"
                 value-prop="value"
                 label-prop="label"
+                id="conta"
                 v-model="countTypeValue"
                 pre-selected-prop="Selecione o tipo de conta:">
             </SelectField>
@@ -12,6 +13,7 @@
                 :option-values="documentTypes"
                 value-prop="id"
                 label-prop="name"
+                id="documento"
                 v-model="documentTypeValue"
                 pre-selected-prop="Selecione o tipo de documento:">
             </SelectField>      
@@ -20,13 +22,14 @@
             <InputField
                 placeholder="Path"
                 type="file"
+                id="csv"
                 v-on:change="onFileInputChange"
                 @change="handleFileChange">
             </InputField>
         </div>
         <div class="container-table">
             <div class="container-table-message" v-if="!fileInputValue">
-                <p>Para visualizar os dados, selecione um arquivo para importar!</p>
+                <p>Para visualizar os dados!</p>
             </div>
             <TableComponent
                 :data="data" 
@@ -39,7 +42,8 @@
                 :onClick="clearData">
             </InputButton>
             <InputButton 
-                :textButton="'Salvar'" 
+                :textButton="'Salvar'"
+                id="botao" 
                 :onClick="uploadCSV">
             </InputButton>
         </div>
@@ -169,7 +173,7 @@ const uploadCSV = () => {
     position: 'bottom-center'
   });
 
-  fetch(`http://127.0.0.1:8000/api/${countTypeValue.value}/upload/`, {
+  fetch(`http://ec2-34-234-75-140.compute-1.amazonaws.com/api/${countTypeValue.value}/upload/`, {
     method: 'POST',
     body: formData,
   })
