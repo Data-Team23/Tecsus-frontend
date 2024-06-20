@@ -22,5 +22,4 @@ COPY --from=build-stage /app/dist /usr/share/nginx/html
 # Expor a porta 80
 EXPOSE 80
 
-# Comando padrão para rodar o Nginx em primeiro plano
 CMD ["nginx", "-g", "daemon off;"]

@@ -75,7 +75,7 @@ import { ref } from 'vue'
 import '@/assets/styles/list-create.css';
 import { useToast } from 'vue-toastification';
 
-const apiUrl = 'http://localhost:8000/api'
+const apiUrl = 'http://3.18.214.149/api'
 
 const toast = useToast()
 
