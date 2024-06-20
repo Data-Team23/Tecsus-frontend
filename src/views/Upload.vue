@@ -173,7 +173,7 @@ const uploadCSV = () => {
     position: 'bottom-center'
   });
 
-  fetch(`http://ec2-34-234-75-140.compute-1.amazonaws.com/api/${countTypeValue.value}/upload/`, {
+  fetch(`http://3.18.214.149/api/${countTypeValue.value}/upload/`, {
     method: 'POST',
     body: formData,
   })
