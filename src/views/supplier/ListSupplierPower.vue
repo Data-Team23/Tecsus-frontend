@@ -49,7 +49,7 @@ import { useToast } from 'vue-toastification';
 
 const toast = useToast();
 
-const apiUrl = 'http://localhost:8000/api'
+const apiUrl = 'http://3.18.214.149/api'
 
 const data = ref([])
 

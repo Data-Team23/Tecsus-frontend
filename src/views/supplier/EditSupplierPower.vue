@@ -53,7 +53,7 @@ const fornecedorId = route.params.id
 const fornecedorValue = ref()
 const contratoValue = ref()
 
-const apiUrl = 'http://localhost:8000/api'
+const apiUrl = 'http://3.18.214.149/api'
 
 
 axios.get(`${apiUrl}/energia/fornecedores_energia/${fornecedorId}`)

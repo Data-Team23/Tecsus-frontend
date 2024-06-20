@@ -48,7 +48,7 @@ import axios from 'axios';
 import { useToast } from 'vue-toastification';
 
 const toast = useToast();
-const apiUrl = 'http://localhost:8000/api'
+const apiUrl = 'http://3.18.214.149/api'
 
 const data = ref([])
 
@@ -59,7 +59,7 @@ axios.get(`${apiUrl}/energia/clientes_contratos`)
     data.value = response.data
   })
   .catch(error => {
-    console.error('Erro ao carregar alertas:', error);
+    console.error('Erro ao carregar clientes:', error);
   });
 
 </script>

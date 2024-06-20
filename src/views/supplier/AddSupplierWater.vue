@@ -60,7 +60,7 @@ import { useToast } from 'vue-toastification';
 import axios from 'axios';
 import '@/assets/styles/list-create.css';
 
-const apiUrl = 'http://localhost:8000/api'
+const apiUrl = 'http://3.18.214.149/api'
 
 const router = useRouter();
 const toast = useToast();
